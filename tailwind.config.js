@@ -12,6 +12,7 @@ module.exports = {
         secondary: '#78AB98',
         text_primary: '#313131',
         text_secondary: '#787878',
+        field_border: '#007AFF',
       },
     },
   },
