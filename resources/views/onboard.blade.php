@@ -10,8 +10,8 @@
   <div class="container mx-auto max-w-xl bg-gray-300">
     <div class="relative h-screen"> 
       <div class="bg-background absolute bottom-0 w-full h-2/5 min-h-96 rounded-t-xl">
-        <div class="flex justify-center">
-          <svg class="-my-16" width="140" height="140" viewBox="0 0 86 87" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <div class="absolute w-full">
+          <svg class="-my-16 mx-auto" width="140" height="140" viewBox="0 0 86 87" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
             <rect x="1" y="1.5" width="84" height="84" rx="42" fill="url(#pattern0_71_613)" stroke="white" stroke-width="2"/>
             <defs>
               <pattern id="pattern0_71_613" patternContentUnits="objectBoundingBox" width="1" height="1">
