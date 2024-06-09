@@ -32,3 +32,7 @@ Route::post('/login', [UserController::class, 'login'])->name('login');
 Route::post('/register', [UserController::class, 'store'])->name('register');
 
 Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+
+Route::get('/checkout', [CartController::class, 'checkout']);
+
+Route::get('/payment-qr', [CartController::class, 'paymentQr']);
