@@ -27,7 +27,7 @@
       </div>
       <div class="flex flex-col justify-between items-center w-full text-center gap-4 h-4/6">
         <div class="w-full">
-          <form action="{{ route('home') }}" method="POST">
+          <form action="{{ route('login') }}" method="POST">
             @csrf
             <div class="flex flex-col justify-between h-56">
               <input required type="text" class="w-full h-12 rounded-xl  text-text_secondary text-md px-4 focus:outline-field_border" placeholder="Nomor Telepon" id='user_phone' name='user_phone'>

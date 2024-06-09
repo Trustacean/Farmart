@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Farmart Home</title>
+  <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
   @vite('resources/css/app.css')
 </head>
 
@@ -22,12 +23,31 @@
             <path d="M14.125 14.125H16.2083L18.2917 26.625C18.5164 27.264 18.9426 27.8128 19.5063 28.1885C20.0699 28.5643 20.7404 28.7467 21.4167 28.7083H28.7083C29.3846 28.7467 30.0551 28.5643 30.6187 28.1885C31.1823 27.8128 31.6086 27.264 31.8333 26.625L32.875 19.3333H17.0417" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
           </svg>
         </button>
-        <button class="focus:outline-none">
-          <svg width="45" height="45" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect width="45" height="45" rx="6" fill="#E7F6EB" fill-opacity="0.9" />
-            <path fill-rule="evenodd" clip-rule="evenodd" d="M24.7959 14.3367C24.7959 15.3511 23.768 16.1735 22.5 16.1735C21.232 16.1735 20.2041 15.3511 20.2041 14.3367C20.2041 13.3223 21.232 12.5 22.5 12.5C23.768 12.5 24.7959 13.3223 24.7959 14.3367ZM24.7959 22.5C24.7959 23.5144 23.768 24.3367 22.5 24.3367C21.232 24.3367 20.2041 23.5144 20.2041 22.5C20.2041 21.4856 21.232 20.6633 22.5 20.6633C23.768 20.6633 24.7959 21.4856 24.7959 22.5ZM22.5 32.5C23.768 32.5 24.7959 31.6776 24.7959 30.6633C24.7959 29.6489 23.768 28.8265 22.5 28.8265C21.232 28.8265 20.2041 29.6489 20.2041 30.6633C20.2041 31.6776 21.232 32.5 22.5 32.5Z" fill="black" />
-          </svg>
-        </button>
+        <div x-data="{ dropdownOpen: false }" @click.away="dropdownOpen = false" class="relative">
+          <button @click="dropdownOpen = !dropdownOpen" class="focus:outline-none">
+            <svg width="45" height="45" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="45" height="45" rx="6" fill="#E7F6EB" fill-opacity="0.9" />
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M24.7959 14.3367C24.7959 15.3511 23.768 16.1735 22.5 16.1735C21.232 16.1735 20.2041 15.3511 20.2041 14.3367C20.2041 13.3223 21.232 12.5 22.5 12.5C23.768 12.5 24.7959 13.3223 24.7959 14.3367ZM24.7959 22.5C24.7959 23.5144 23.768 24.3367 22.5 24.3367C21.232 24.3367 20.2041 23.5144 20.2041 22.5C20.2041 21.4856 21.232 20.6633 22.5 20.6633C23.768 20.6633 24.7959 21.4856 24.7959 22.5ZM22.5 32.5C23.768 32.5 24.7959 31.6776 24.7959 30.6633C24.7959 29.6489 23.768 28.8265 22.5 28.8265C21.232 28.8265 20.2041 29.6489 20.2041 30.6633C20.2041 31.6776 21.232 32.5 22.5 32.5Z" fill="black" />
+            </svg>
+          </button>
+          <div x-show="dropdownOpen" class="absolute right-0 mt-2 py-2 w-48 bg-white rounded-md shadow-xl z-50">
+            <span class="font-bold block px-4 py-2 text-sm capitalize text-gray-700">
+              Hello, {{ isset($user) ? $user->user_name : 'Pengunjung' }}
+            </span>
+            <a href="#" class="block px-4 py-2 text-sm capitalize text-gray-700 hover:bg-primary hover:text-white">
+              Profil Saya
+            </a>
+            <a href="#" class="block px-4 py-2 text-sm capitalize text-gray-700 hover:bg-primary hover:text-white">
+              Toko Saya
+            </a>
+            <a href="#" class="block px-4 py-2 text-sm capitalize text-gray-700 hover:bg-primary hover:text-white">
+              Bantuan
+            </a>
+            <a href="./login" class="block px-4 py-2 text-sm capitalize text-gray-700 hover:bg-primary hover:text-white">
+              {{ isset($user) ? 'Keluar' : 'Masuk' }}
+            </a>
+          </div>
+        </div>
       </div>
     </div>
     <div class="text-center relative h-40">
