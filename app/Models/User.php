@@ -14,7 +14,9 @@ class User extends Authenticatable
         'user_phone',
         'user_password',
         'user_name',
-        'user_postal_code'];
+        'user_postal_code',
+        'user_address',
+        'user_address_detail'];
     protected $keyType = 'string';
     public $timestamps = false;
     public $incrementing = false;
