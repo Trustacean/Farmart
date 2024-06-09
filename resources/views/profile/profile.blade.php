@@ -67,8 +67,8 @@
           </svg>
           <div class="flex-grow">
             <span class="mb-3 font-bold text-xl text-text_primary">Alamat</span>
-            <p class="text-sm">Jl. Raya Tajem No.32, Tajem, Maguwoharjo,</p>
-            <p class="text-sm">Kec. Depok, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55281</p>
+            <p class="text-sm">{{ $user->user_address_detail }}</p>
+            <p class="text-sm">User_Address</p>
           </div>
         </div>
         <a class="w-12 flex justify-center items-center" href="./profile/address">

@@ -35,9 +35,11 @@ Route::get('/get-cities/{provinceId}', [AddressController::class, 'getCities']);
 
 Route::get('/get-districts/{cityId}', [AddressController::class, 'getDistricts']);
 
-Route::get('/get-subdistricts/{districtId}', [AddressController::class, 'getSubdistricts']);
+Route::get('/get-subdistricts/{districtId}', [AddressController::class, 'getSubDistricts']);
 
-Route::get('/get-zipcodes/{subdistrictId}', [AddressController::class, 'getZipcodes']);
+Route::get('/get-zip-codes/{districtId}/{subDistrictId}', [AddressController::class, 'getZipCode']);
+
+Route::post('/profile/address/update', [UserController::class, 'storeAddress'])->name('profile/address/update');
 
 Route::get('/logout', [UserController::class, 'logout'])->name('logout');
 
