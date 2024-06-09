@@ -23,13 +23,16 @@ class UserController extends Controller
 
     public function login(Request $request)
     {
-        $session = $request->session();
+        session()->forget('user_id');
         $user = User::where('user_phone', $request->user_phone)->first();
         if (!$user || !Hash::check($request->user_password, $user->user_password)) {
             return response()->json([
                 'message' => 'Unauthorized'
             ], 401);
+        } else {
+            session(['user_id' => $user->user_id]);
+            return view('home', ['user' => $user]);
         }
-        return redirect('/home')->with('user', $user);
+        
     }
 }

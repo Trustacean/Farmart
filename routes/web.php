@@ -30,6 +30,10 @@ Route::post('/login', [UserController::class, 'login'])->name('login');
 
 Route::post('/register', [UserController::class, 'store'])->name('register');
 
+Route::get('/home', function () {
+    return view('home');
+});
+
 Route::post('/home', function () {
     return view('home');
 })->name('home');
