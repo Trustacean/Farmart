@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 use App\Models\User;
 
 class UserController extends Controller
@@ -44,6 +45,7 @@ class UserController extends Controller
         if (!session()->has('user_id')) {
             return redirect('/login');
         }
+
         $user = User::where('user_id', session('user_id'))->first();
         return view('profile/profile', ['user' => $user]);
     }
@@ -81,8 +83,19 @@ class UserController extends Controller
         $user->user_name = $request->user_name;
         $user->user_postal_code = 0;
         $user->user_address = '';
+        $user->user_address_detail = '';
         $user->save();
         return redirect('/login');
+    }
+
+    public function storeAddress(Request $request)
+    {
+        $user = User::where('user_id', session('user_id'))->first();
+        $user->user_postal_code = $request->zip_code;
+        $user->user_address = $request->subdistrict . ', ' . $request->district . ', ' . $request->city . ', ' . $request->province;
+        $user->user_address_detail = $request->user_address_detail;
+        $user->save();
+        return redirect('/profile');
     }
 
     public function login(Request $request)
