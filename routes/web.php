@@ -14,6 +14,7 @@ use App\Http\Controllers\UserController;
 |
 */
 
+
 Route::get('/', function () {
     return view('onboard');
 });
@@ -41,3 +42,4 @@ Route::post('/home', function () {
 Route::get('/seller/register', function () {
     return view('seller/register');
 });
+
