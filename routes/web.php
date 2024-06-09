@@ -29,3 +29,11 @@ Route::get('/register', function () {
 Route::post('/login', [UserController::class, 'login'])->name('login');
 
 Route::post('/register', [UserController::class, 'store'])->name('register');
+
+Route::post('/home', function () {
+    return view('home');
+})->name('home');
+
+Route::get('/seller/register', function () {
+    return view('seller/register');
+});
