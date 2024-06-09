@@ -29,6 +29,10 @@ Route::get('/search', function () {
     return view('search');
 });
 
+Route::get('/detail', function () {
+    return view('detail');
+});
+
 Route::post('/login', [UserController::class, 'login'])->name('login');
 
 Route::post('/register', [UserController::class, 'store'])->name('register');
