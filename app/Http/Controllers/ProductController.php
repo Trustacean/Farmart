@@ -48,11 +48,37 @@ class ProductController extends Controller
         return view('product/edit', ['product' => $product, 'categories' => $categories]);
     }
 
+    public function showProductCreate()
+    {
+        $categories = Category::all();
+        return view('product/create', ['categories' => $categories]);
+    }
+
+    public function storeProduct()
+    {
+        $user = User::where('user_id', session('user_id'))->first();
+        $seller = Seller::where('user_id', $user->user_id)->first();
+
+        $product = new Product();
+        $product->product_id = uniqid();
+        $product->seller_id = $seller->seller_id;
+        $product->product_name = request('product_name');
+        $product->product_sell_price = request('product_sell_price');
+        $product->product_weight = request('product_weight');
+        $product->product_stock = request('product_stock');
+        $product->product_description = request('product_description');
+        $product->category_id = request('product_category');
+        $product->save();
+
+        return redirect('/seller/store');
+    }
+
     public function updateProduct($product_id)
     {
         $product = Product::where('product_id', $product_id)->first();
         $product->product_name = request('product_name');
         $product->product_sell_price = request('product_sell_price');
+        $product->product_weight = request('product_weight');
         $product->product_stock = request('product_stock');
         $product->product_description = request('product_description');
         $product->category_id = request('product_category');

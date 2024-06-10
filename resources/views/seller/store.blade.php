@@ -46,7 +46,7 @@
     </div>
     <div class="fixed bottom-0 w-full bg-white p-3 flex justify-around max-w-xl">
       <div class="flex flex-col justify-between items-center w-full h-full">
-        <a href="./register" class="flex items-center justify-center bg-primary w-full h-12 rounded-xl border-2 text-white text-lg">Tambah Produk</a>
+        <a href="{{ route('product.create') }}" class="flex items-center justify-center bg-primary w-full h-12 rounded-xl border-2 text-white text-lg">Tambah Produk</a>
       </div>
     </div>
   </div>

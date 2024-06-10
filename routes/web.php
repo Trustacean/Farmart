@@ -59,6 +59,10 @@ Route::get('/seller/store', [SellerController::class, 'showStorePage'])->name('s
 
 Route::get('/product/detail/{productId}', [ProductController::class, 'showProductDetail'])->name('product/detail');
 
+Route::get('/product/create', [ProductController::class, 'showProductCreate'])->name('product.create');
+
+Route::post('/product/create', [ProductController::class, 'storeProduct'])->name('product.create');
+
 Route::get('/product/edit/{productId}', [ProductController::class, 'showProductEdit'])->name('product/edit');
 
 Route::post('/product/update/{productId}', [ProductController::class, 'updateProduct'])->name('product.update');
