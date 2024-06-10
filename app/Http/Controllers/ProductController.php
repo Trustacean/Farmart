@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Seller;
 use App\Models\Product;
@@ -22,7 +21,9 @@ class ProductController extends Controller
         $district = District::where('id', $temp->d_kecamatan_id)->first();
         $city = City::where('id', $temp->d_kabkota_id)->first();
 
-        return view('product/detail', ['product' => $product, 'seller' => $seller, 'district' => $district, 'city' => $city]);
+        $category = Category::where('category_id', $product->category_id)->first();
+
+        return view('product/detail', ['product' => $product, 'seller' => $seller, 'district' => $district, 'city' => $city, 'category' => $category]);
     }
 
     public function showProductEdit($productId)

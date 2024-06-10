@@ -45,6 +45,13 @@ class UserController extends Controller
         return view('home', ['user' => $user], ['products' => $products]);
     }
 
+    public function showCategorizedPage($category)
+    {
+        $products = Product::where('category_id', $category)->get();
+
+        return view('search', ['products' => $products]);
+    }
+
     public function showProfilePage()
     {
         if (!session()->has('user_id')) {

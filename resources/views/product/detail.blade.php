@@ -73,6 +73,7 @@
             <div class="bg-white p-4">
               <p> Berat : {{ $product->product_weight }} gram</p>
               <p> Stok : {{ $product->product_stock }}</p>
+              <p> Kategori : {{ $category->category_name }}</p>
               <br>
               {{ $product->product_description }}
             </div>

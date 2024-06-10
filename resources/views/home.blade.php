@@ -60,42 +60,42 @@
       </div>
     </div>
     <div class="flex flex-wrap justify-around p-4 gap-2">
-      <div class="w-5/12 relative h-28 hover:scale-105 duration-500 rounded-lg p-4 m-2">
+      <a href="{{ route('category' , '1') }}" class="w-5/12 relative h-28 hover:scale-105 duration-500 rounded-lg p-4 m-2">
         <img src="{{ asset('images/nutri_tanaman.png') }}" alt="Nutri Tanaman" class="object-cover w-full h-full absolute inset-0 rounded-lg">
         <div class="flex justify-center items-center h-full w-full relative z-10 text-white font-bold">
           <p class="">Nutrisi Tanaman</p>
         </div>
-      </div>
-      <div class="w-5/12 relative h-28 hover:scale-105 duration-500 rounded-lg p-4 m-2">
+      </a>
+      <a href="{{ route('category' , '2') }}" class="w-5/12 relative h-28 hover:scale-105 duration-500 rounded-lg p-4 m-2">
         <img src="{{ asset('images/bibit_beni.png') }}" alt="Bibit & Beni" class="object-cover w-full h-full absolute inset-0 rounded-lg">
         <div class="flex justify-center items-center h-full w-full relative z-10 text-white font-bold">
           <p class="">Bibit & Benih</p>
         </div>
-      </div>
-      <div class="w-5/12 relative h-28 hover:scale-105 duration-500 rounded-lg p-4 m-2">
+      </a>
+      <a href="{{ route('category' , '3') }}" class="w-5/12 relative h-28 hover:scale-105 duration-500 rounded-lg p-4 m-2">
         <img src="{{ asset('images/proteksi_pertanian.png') }}" alt="Proteksi Tanaman" class="object-cover w-full h-full absolute inset-0 rounded-lg">
         <div class="flex justify-center items-center h-full w-full relative z-10 text-white font-bold">
           <p class="">Proteksi Tanaman</p>
         </div>
-      </div>
-      <div class="w-5/12 relative h-28 hover:scale-105 duration-500 rounded-lg p-4 m-2">
+      </a>
+      <a href="{{ route('category' , '4') }}" class="w-5/12 relative h-28 hover:scale-105 duration-500 rounded-lg p-4 m-2">
         <img src="{{ asset('images/peralatan_pertanian.png') }}" alt="Peralatan Pertanian" class="object-cover w-full h-full absolute inset-0 rounded-lg">
         <div class="flex justify-center items-center h-full w-full relative z-10 text-white font-bold">
           <p class="">Peralatan Pertanian</p>
         </div>
-      </div>
-      <div class="w-5/12 relative h-28 hover:scale-105 duration-500 rounded-lg p-4 m-2">
+      </a>
+      <a href="{{ route('category' , '5') }}" class="w-5/12 relative h-28 hover:scale-105 duration-500 rounded-lg p-4 m-2">
         <img src="{{ asset('images/teknologi_pertanian.png') }}" alt="Peralatan Pertanian" class="object-cover w-full h-full absolute inset-0 rounded-lg">
         <div class="flex justify-center items-center h-full w-full relative z-10 text-white font-bold">
           <p class="">Teknologi Pertanian</p>
         </div>
-      </div>
-      <div class="w-5/12 relative h-28 hover:scale-105 duration-500 rounded-lg p-4 m-2">
+      </a>
+      <a href="{{ route('category' , '6') }}" class="w-5/12 relative h-28 hover:scale-105 duration-500 rounded-lg p-4 m-2">
         <img src="{{ asset('images/produk_peternakan.png') }}" alt="Produk Peternakan" class="object-cover w-full h-full absolute inset-0 rounded-lg">
         <div class="flex justify-center items-center h-full w-full relative z-10 text-white font-bold">
           <p class="">Produk Pertanian</p>
         </div>
-      </div>
+      </a>
     </div>
     <div class="flex justify-around bg-white p-1 h-full">
       <button class="flex-1 bg-gray-300 hover:bg-primary hover:text-white hover:duration-300 p-2 m-1 rounded-lg h-full text-sm">Rekomendasi</button>

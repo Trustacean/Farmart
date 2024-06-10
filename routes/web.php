@@ -35,6 +35,8 @@ Route::post('/register', [UserController::class, 'store'])->name('register');
 
 Route::get('/home', [UserController::class, 'showHomePage'])->name('home');
 
+Route::get('/category/{category}', [UserController::class, 'showCategorizedPage'])->name('category');
+
 Route::get('/profile', [UserController::class, 'showProfilePage'])->name('profile');
 
 Route::get('profile/address', [AddressController::class, 'index'])->name('profile/address');
