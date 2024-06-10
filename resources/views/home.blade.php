@@ -12,7 +12,7 @@
 <body class="bg-gray-300">
   <div class="container mx-auto max-w-xl bg-background min-h-screen">
     <div class="p-4 flex justify-between items-center">
-      <input type="text" placeholder="Search" class="w-3/4 p-2 border rounded">
+      <input type="text" placeholder="Search" class="w-3/4 p-2 rounded border border-text_secondary">
       <div class="flex space-x-4">
         <button class="">
           <svg width="47" height="47" viewBox="0 0 47 47" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -30,20 +30,20 @@
               <path fill-rule="evenodd" clip-rule="evenodd" d="M24.7959 14.3367C24.7959 15.3511 23.768 16.1735 22.5 16.1735C21.232 16.1735 20.2041 15.3511 20.2041 14.3367C20.2041 13.3223 21.232 12.5 22.5 12.5C23.768 12.5 24.7959 13.3223 24.7959 14.3367ZM24.7959 22.5C24.7959 23.5144 23.768 24.3367 22.5 24.3367C21.232 24.3367 20.2041 23.5144 20.2041 22.5C20.2041 21.4856 21.232 20.6633 22.5 20.6633C23.768 20.6633 24.7959 21.4856 24.7959 22.5ZM22.5 32.5C23.768 32.5 24.7959 31.6776 24.7959 30.6633C24.7959 29.6489 23.768 28.8265 22.5 28.8265C21.232 28.8265 20.2041 29.6489 20.2041 30.6633C20.2041 31.6776 21.232 32.5 22.5 32.5Z" fill="black" />
             </svg>
           </button>
-          <div x-show="dropdownOpen" class="absolute right-0 mt-2 py-2 w-48 bg-white rounded-md shadow-xl z-50">
+          <div x-show="dropdownOpen" class="duration-100 absolute right-0 mt-2 py-2 w-48 bg-white rounded-md shadow-xl z-50">
             <span class="font-bold block px-4 py-2 text-sm capitalize text-gray-700">
               Hello, {{ isset($user) ? $user->user_name : 'Pengunjung' }}
             </span>
-            <a href="#" class="block px-4 py-2 text-sm capitalize text-gray-700 hover:bg-primary hover:text-white">
+            <a href="./profile" class="m-1 block px-4 py-2 text-sm capitalize text-gray-700 hover:bg-primary hover:text-white">
               Profil Saya
             </a>
-            <a href="#" class="block px-4 py-2 text-sm capitalize text-gray-700 hover:bg-primary hover:text-white">
+            <a href="#" class="m-1 block px-4 py-2 text-sm capitalize text-gray-700 hover:bg-primary hover:text-white">
               Toko Saya
             </a>
-            <a href="#" class="block px-4 py-2 text-sm capitalize text-gray-700 hover:bg-primary hover:text-white">
+            <a href="#" class="m-1 block px-4 py-2 text-sm capitalize text-gray-700 hover:bg-primary hover:text-white">
               Bantuan
             </a>
-            <a href="./login" class="block px-4 py-2 text-sm capitalize text-gray-700 hover:bg-primary hover:text-white">
+            <a href="{{ isset($user) ? './logout' : './login' }}" class="m-1 block px-4 py-2 text-sm capitalize {{ isset($user) ? 'hover:text-white hover:bg-red-600' : 'bg-white text-gray-700 hover:bg-primary hover:text-white' }} hover:text-white">
               {{ isset($user) ? 'Keluar' : 'Masuk' }}
             </a>
           </div>
@@ -103,10 +103,10 @@
       <button class="flex-1 bg-gray-300 hover:bg-primary hover:text-white hover:duration-300 p-2 m-1 rounded-lg h-full text-sm">Promo & Diskon</button>
     </div>
     <div class="p-4">
-      <a class="flex bg-white border-2 border-text_secondary rounded-lg p-4 mb-4" href="/">
+      <a class="flex bg-white border border-text_secondary rounded-lg p-4 mb-4" href="#">
         <img src="{{ asset('images/daging_segar.png') }}" alt="Daging Segar" class="w-24 h-24 rounded-lg mr-4">
         <div>
-          <h3 class="font-bold">Daging Segar Pak Rahmat 500g</h3>
+          <h3 class="font-bold hover:underline duration-300">Daging Segar Pak Rahmat 500g</h3>
           <p class="text-green-600 font-bold">Rp50,000</p>
           <p class="text-gray-600">Rating 4.9 &#9733; 231 Terjual</p>
         </div>
@@ -124,12 +124,12 @@
           <path d="M9.99066 21.85V18.6338C9.99066 17.8128 10.6611 17.1472 11.4881 17.1472H14.5113C14.9084 17.1472 15.2893 17.3038 15.5701 17.5826C15.851 17.8614 16.0087 18.2395 16.0087 18.6338V21.85C16.0062 22.1913 16.141 22.5195 16.3833 22.7618C16.6255 23.004 16.9552 23.1402 17.299 23.1402H19.3615C20.3248 23.1427 21.2495 22.7646 21.9315 22.0892C22.6135 21.4139 22.9968 20.4969 22.9968 19.5407V10.3782C22.9968 9.60569 22.6519 8.87296 22.055 8.37737L15.0387 2.81442C13.8182 1.83904 12.0694 1.87054 10.8854 2.88921L4.0291 8.37737C3.40402 8.85836 3.03043 9.59326 3.01196 10.3782V19.5313C3.01196 21.5245 4.63955 23.1402 6.64729 23.1402H8.66273C9.37686 23.1402 9.95723 22.5683 9.96241 21.8593L9.99066 21.85Z" fill="#1E1E1E" />
         </svg>
       </button>
-      <button class="focus:outline-none">
+      <a class="focus:outline-none" href="./profile">
         <svg width="40" height="40" viewBox="0 0 27 26" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M5.70169 21.2472C5.70169 17.6456 8.62141 14.7258 12.2231 14.7258H14.9578C18.5595 14.7258 21.4792 17.6456 21.4792 21.2472C21.4792 21.7119 21.1025 22.0887 20.6378 22.0887H6.54316C6.07843 22.0887 5.70169 21.7119 5.70169 21.2472Z" fill="#34A853" />
           <path d="M13.7277 12.8966C16.4317 12.8966 18.5983 10.7291 18.5983 8.02604C18.5983 5.32296 16.4317 3.15552 13.7277 3.15552C11.0246 3.15552 8.85721 5.32296 8.85721 8.02604C8.85721 10.7291 11.0246 12.8966 13.7277 12.8966Z" fill="#34A853" />
         </svg>
-      </button>
+      </a>
     </div>
   </div>
 </body>

@@ -8,7 +8,7 @@
   @vite('resources/css/app.css')
 </head>
 
-<body class="bg-slate-900">
+<body class="bg-gray-300">
   <div class="container mx-auto max-w-xl bg-background h-screen">
     <div class="flex flex-col justify-between pt-16 pb-10 px-8 h-full">
       <div class="">
@@ -29,9 +29,9 @@
           <form action="{{ route('register') }}" method="POST">
             @csrf
             <div class="flex flex-col justify-between h-44">
-              <input required type="text" class="w-full h-12 rounded-xl  text-text_secondary text-md px-4 focus:outline-field_border" placeholder="Nomor Telepon" id="user_phone" name="user_phone">
-              <input required type="text" class="w-full h-12 rounded-xl  text-text_secondary text-md px-4 focus:outline-field_border" placeholder="Nama" id="user_name" name="user_name">
-              <input required type="password" class="w-full h-12 rounded-xl  text-text_secondary text-md px-4 focus:outline-field_border" placeholder="Kata Sandi" id="user_password" name="user_password">
+              <input required type="text" class="w-full h-12 border border-text_secondary rounded-xl  text-text_secondary text-md px-4 focus:outline-field_border" placeholder="Nomor Telepon" id="user_phone" name="user_phone">
+              <input required type="text" class="w-full h-12 border border-text_secondary rounded-xl  text-text_secondary text-md px-4 focus:outline-field_border" placeholder="Nama" id="user_name" name="user_name">
+              <input required type="password" class="w-full h-12 border border-text_secondary rounded-xl  text-text_secondary text-md px-4 focus:outline-field_border" placeholder="Kata Sandi" id="user_password" name="user_password">
             </div>
             <button type="submit" class="mt-16 flex items-center justify-center bg-primary w-full h-12 rounded-xl text-background text-lg">Daftar</button>
           </form>

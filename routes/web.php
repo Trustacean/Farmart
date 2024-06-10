@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AddressController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 
@@ -14,37 +15,44 @@ use App\Http\Controllers\UserController;
 |
 */
 
+
+
 Route::get('/', function () {
     return view('onboard');
 });
+Route::get('/', [UserController::class, 'showOnboardPage'])->name('onboard');
 
-Route::get('/login', function () {
-    return view('login');
-});
+Route::get('/register', [UserController::class, 'showRegisterPage'])->name('register');
 
-Route::get('/register', function () {
-    return view('register');
-});
-Route::get('/search', function () {
-    return view('search');
-});
-
-Route::get('/detail', function () {
-    return view('detail');
-});
+Route::get('/login', [UserController::class, 'showLoginPage'])->name('login');
 
 Route::post('/login', [UserController::class, 'login'])->name('login');
 
 Route::post('/register', [UserController::class, 'store'])->name('register');
 
-Route::get('/home', function () {
-    return view('home');
-});
+Route::get('/home', [UserController::class, 'showHomePage'])->name('home');
 
-Route::post('/home', function () {
-    return view('home');
-})->name('home');
+Route::get('/profile', [UserController::class, 'showProfilePage'])->name('profile');
+
 
 Route::get('/seller/register', function () {
     return view('seller/register');
 });
+
+Route::get('profile/address', [AddressController::class, 'index'])->name('profile/address');
+
+Route::get('/get-cities/{provinceId}', [AddressController::class, 'getCities']);
+
+Route::get('/get-districts/{cityId}', [AddressController::class, 'getDistricts']);
+
+Route::get('/get-subdistricts/{districtId}', [AddressController::class, 'getSubDistricts']);
+
+Route::get('/get-zip-codes/{districtId}/{subDistrictId}', [AddressController::class, 'getZipCode']);
+
+Route::post('/profile/address/update', [UserController::class, 'storeAddress'])->name('profile/address/update');
+
+Route::get('/logout', [UserController::class, 'logout'])->name('logout');
+
+Route::get('/seller/register', [UserController::class, 'showSellerRegisterPage'])->name('seller/register');
+
+Route::post('/seller/register', [UserController::class, 'storeSeller'])->name('seller/register');
