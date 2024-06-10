@@ -95,24 +95,6 @@
 
             $('#district').change(function() {
                 var districtId = $(this).val();
-                if (districtId) {
-                    $.ajax({
-                        url: '/get-subdistricts/' + districtId,
-                        type: 'GET',
-                        dataType: 'json',
-                        success: function(data) {
-                            $('#subdistrict').empty();
-                            $('#subdistrict').append('<option value="">Pilih Kelurahan</option>');
-                            $.each(data, function(key, value) {
-                                $('#subdistrict').append('<option value="' + value.id + '">' + value.nama + '</option>');
-                            });
-                        }
-                    });
-                } else {
-                    $('#subdistrict').empty();
-                    $('#subdistrict').append('<option value="">Pilih Kelurahan</option>');
-                }
-
                 var cityId = $('#city').val();
 
                 if (districtId) {
