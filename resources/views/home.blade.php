@@ -114,6 +114,7 @@
       </a>
       @endforeach
     </div>
+    <div class="p-6"></div>
     <div class="fixed bottom-0 w-full bg-white p-3 flex justify-around max-w-xl">
       <button class="focus:outline-none">
         <svg width="40" height="40" viewBox="0 0 27 26" fill="none" xmlns="http://www.w3.org/2000/svg">

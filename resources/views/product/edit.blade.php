@@ -9,7 +9,7 @@
 </head>
 
 <body class="bg-gray-400">
-  <div class="container mx-auto max-w-xl bg-white min-h-screen p-4 rounded-lg">
+  <div class="container mx-auto max-w-xl bg-white min-h-screen p-4">
     <div class="flex justify-between items-center mb-4">
       <div class="flex space-x-4">
         <button class="focus:outline-none">
@@ -30,31 +30,38 @@
     </div>
 
     <div class="p-4">
-        <form class="space-y-6">
-            <div class="  mb-4">
-                <input type="text" id="nama-barang" name="nama-barang" placeholder="Nama Barang" style="width: 510px; height: 60px;" class="mt-1 block w-full px-6 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-            </div>
-            <div class="  mb-4">
-                <textarea id="deskripsi-barang" name="deskripsi-barang" rows="3" cols="50" placeholder="Deskripsi Barang" style="width: 510px; height:150px" class="mt-1 block w-full px-6 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"></textarea>
-
-            </div>
-            <div class="  mb-4">
-                <input type="text" id="harga" name="harga" inputmode="numeric" placeholder="Harga" style="width: 510px; height: 60px;" class="mt-1 block w-full px-6 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-            </div>
-            <div class="mb-4">
-                <input type="text" id="diskon" name="diskon" inputmode="numeric" placeholder="Diskon (%)" style="width: 510px; height: 60px;" class="mt-1 block w-full px-6 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-            </div>
-            <div class="mb-4">
-                <input type="text" id="stok" name="stok" inputmode="numeric" placeholder="Stok" style="width: 510px; height: 60px;" class="mt-1 block w-full px-6 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-            </div>
-
-            <div class="flex justify-around bg-white p-1 h-full ">
-            <button class="flex-1 bg-gray-300 hover:bg-primary hover:text-white hover:duration-300 p-2 m-1 rounded-lg h-full text-sm" style="width: 100px; height: 50px;">Hapus Produk</button>
-            <button class="flex-1 bg-gray-300 hover:bg-primary hover:text-white hover:duration-300 p-2 m-1 rounded-lg h-full text-sm" style="width: 100px; height: 50px;">Simpan</button>
-            </div>
-            </form>
+      <form class="space-y-6">
+        <div class="  mb-4">
+          <input type="text" id="product_name" name="product_name" value="{{ $product->product_name }}" placeholder="Nama Barang" style="width: 510px; height: 60px;" class="mt-1 block w-full px-6 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
         </div>
+        <div class="  mb-4">
+          <input id="product_description" name="product_description" value="{{ $product->product_description }}" rows="3" cols="50" placeholder="Deskripsi Barang" style="width: 510px; height:150px" class="mt-1 block w-full px-6 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"></input>
         </div>
+        <div class="  mb-4">
+          <input type="text" id="product_sell_price" name="product_sell_price" value="{{ $product->product_sell_price }}" inputmode="numeric" placeholder="Harga" style="width: 510px; height: 60px;" class="mt-1 block w-full px-6 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+        </div>
+        <div class="mb-4">
+          <input type="text" id="product_weight" name="product_weight" value="{{ $product->product_weight }}" inputmode="numeric" placeholder="Berat Barang" style="width: 510px; height: 60px;" class="mt-1 block w-full px-6 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+        </div>
+        <div class="mb-4">
+          <input type="text" id="product_stok" name="product_stok" value="{{ $product->product_stock }}" inputmode="numeric" placeholder="Stok" style="width: 510px; height: 60px;" class="mt-1 block w-full px-6 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+        </div>
+        <div class="mb-4">
+          <select id="product_category" name="product_category" value="{{ $product->product_category }}" style="width: 510px; height: 60px;" class="mt-1 block w-full px-6 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+            @foreach($categories as $category)
+            <option value="{{ $category->category_id }}">{{ $category->category_name }}</option>
+            @endforeach
+          </select>
+        </div>
+      </form>
+    </div>
+    <div class="relative">
+      <div class="absolute bottom-0 w-full flex gap-5 justify-around bg-white p-1 h-full ">
+        <a href="./register" class="flex items-center justify-center bg-white w-full h-12 rounded-xl border-2 text-red-400 border-red-400 text-lg">Hapus Produk</a>
+        <a href="./register" class="flex items-center justify-center bg-primary w-full h-12 rounded-xl border-2 text-white text-lg">Simpan Produk</a>
+      </div>
+    </div>
+  </div>
 </body>
 
 </html>

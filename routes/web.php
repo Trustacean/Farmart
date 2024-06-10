@@ -36,11 +36,6 @@ Route::get('/home', [UserController::class, 'showHomePage'])->name('home');
 
 Route::get('/profile', [UserController::class, 'showProfilePage'])->name('profile');
 
-
-Route::get('/seller/register', function () {
-    return view('seller/register');
-});
-
 Route::get('profile/address', [AddressController::class, 'index'])->name('profile/address');
 
 Route::get('/get-cities/{provinceId}', [AddressController::class, 'getCities']);
@@ -62,3 +57,5 @@ Route::post('/seller/register', [SellerController::class, 'storeSeller'])->name(
 Route::get('/seller/store', [SellerController::class, 'showStorePage'])->name('seller/store');
 
 Route::get('/product/detail/{productId}', [ProductController::class, 'showProductDetail'])->name('product/detail');
+
+Route::get('/product/edit/{productId}', [ProductController::class, 'showProductEdit'])->name('product/edit');
