@@ -33,6 +33,7 @@ Farmart is an online market service for farmers in Indonesia, we aim to uhhhhhh.
 
 
 ## Contributors
-[Edward (Trustacean)](https://github.com/Trustacean)
-[Sahril Nanda Putra](https://github.com/sahrilputra)
+[Hendro Wunga](https://github.com/hendrowunga)\
+[Edward (Trustacean)](https://github.com/Trustacean)\
+[Sahril Nanda Putra](https://github.com/sahrilputra)\
 [Stepanus Deni](https://github.com/putrastepanus)
