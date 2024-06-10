@@ -37,11 +37,11 @@ class UserController extends Controller
 
     public function showHomePage()
     {
+        $products = Product::all();
         if (!session()->has('user_id')) {
-            return view('home');
+            return view('home', ['products' => $products]);
         }
         $user = User::where('user_id', session('user_id'))->first();
-        $products = Product::all();
         return view('home', ['user' => $user], ['products' => $products]);
     }
 
