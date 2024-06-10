@@ -19,9 +19,9 @@
               <img src="/icons/Chevron-left.svg" alt="" class="w-[30px]">
             </a>
             <div class="flex flex-row justify-between items-end gap-2">
-              <button class="px-4 w-[50px] h-12  bg-primary rounded-xl flex items-center mx-auto shadow-lg ">
+              <a href="{{ route('cart') }}" class="px-4 w-[50px] h-12  bg-primary rounded-xl flex items-center mx-auto shadow-lg ">
                 <img src="/icons/keranjang.svg" alt="" class="w-[30px]">
-              </button>
+              </a>
               <button class="px-4 w-[50px] h-12  bg-primary rounded-xl flex items-center mx-auto shadow-lg ">
                 <img src="/icons/search.svg" alt="" class="w-[30px]">
               </button>

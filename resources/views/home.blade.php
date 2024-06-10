@@ -14,7 +14,7 @@
     <div class="p-4 flex justify-between items-center">
       <input type="text" placeholder="Search" class="w-3/4 p-2 rounded border border-text_secondary">
       <div class="flex space-x-4">
-        <button class="">
+        <a href="{{ route('cart') }}" class="">
           <svg width="47" height="47" viewBox="0 0 47 47" fill="none" xmlns="http://www.w3.org/2000/svg">
             <rect x="0.5" y="0.5" width="46" height="46" rx="6.5" fill="#3FB860" />
             <rect x="0.5" y="0.5" width="46" height="46" rx="6.5" stroke="#2F994C" />
@@ -22,7 +22,7 @@
             <path d="M28.7083 32.8749C29.8589 32.8749 30.7917 31.9422 30.7917 30.7916C30.7917 29.641 29.8589 28.7083 28.7083 28.7083C27.5577 28.7083 26.625 29.641 26.625 30.7916C26.625 31.9422 27.5577 32.8749 28.7083 32.8749Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
             <path d="M14.125 14.125H16.2083L18.2917 26.625C18.5164 27.264 18.9426 27.8128 19.5063 28.1885C20.0699 28.5643 20.7404 28.7467 21.4167 28.7083H28.7083C29.3846 28.7467 30.0551 28.5643 30.6187 28.1885C31.1823 27.8128 31.6086 27.264 31.8333 26.625L32.875 19.3333H17.0417" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
           </svg>
-        </button>
+        </a>
         <div x-data="{ dropdownOpen: false }" @click.away="dropdownOpen = false" class="relative">
           <button @click="dropdownOpen = !dropdownOpen" class="focus:outline-none">
             <svg width="45" height="45" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg">

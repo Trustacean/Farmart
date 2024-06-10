@@ -11,7 +11,7 @@
 
 <body class="bg-slate-900">
   <div class="bg-background h-screen flex flex-col">
-    <a href="{{url()->previous()}}
+    <a href="{{URL::previous()}}
     " class="border-b">
       <button class="p-4 flex items-center justify-start">
         <svg class="w-6 h-6 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
