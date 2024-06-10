@@ -20,19 +20,4 @@ class Seller extends Model
         'seller_postal_code',
         'seller_address',
         'seller_address_detail'];
-
-    public function user()
-    {
-        return $this->belongsTo(User::class, 'user_id', 'user_id');
-    }
-
-    public function products()
-    {
-        return $this->hasMany(Product::class, 'seller_id', 'seller_id');
-    }
-
-    public function orders()
-    {
-        return $this->hasMany(Order::class, 'seller_id', 'seller_id');
-    }
 }

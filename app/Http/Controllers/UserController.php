@@ -6,10 +6,10 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use App\Models\Province;
 use App\Models\City;
-use App\Models\District;
-use App\Models\Subdistrict;
 use App\Models\Zipcode;
 use App\Models\User;
+use App\Models\Seller;
+use App\Models\Product;
 
 class UserController extends Controller
 {
@@ -41,7 +41,8 @@ class UserController extends Controller
             return view('home');
         }
         $user = User::where('user_id', session('user_id'))->first();
-        return view('home', ['user' => $user]);
+        $products = Product::all();
+        return view('home', ['user' => $user], ['products' => $products]);
     }
 
     public function showProfilePage()
@@ -51,13 +52,19 @@ class UserController extends Controller
         }
 
         $user = User::where('user_id', session('user_id'))->first();
+        $isSeller = Seller::where('user_id', $user->user_id)->exists();
+
         $zipcode = $user->user_postal_code;
+        if (!$zipcode) {
+            return view('profile/profile', ['user' => $user, 'address' => null, 'isSeller' => $isSeller]);
+        }
+
         $district = Zipcode::where('kodepos', $zipcode)->first();
         $city = City::where('id', $district->d_kabkota_id)->first();
         $province = Province::where('id', $city->d_provinsi_id)->first();
 
         $address = $province->nama . ', ' . $city->nama . ', ' . $district->nama;
-        return view('profile/profile', ['user' => $user ,'address' => $address]);
+        return view('profile/profile', ['user' => $user ,'address' => $address, 'isSeller' => $isSeller]);
     }
 
     public function showEditAddressPage()

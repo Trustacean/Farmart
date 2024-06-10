@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Ramsey\Uuid\Uuid;
+use App\Models\Seller;
 
 class User extends Authenticatable
 {
@@ -28,5 +29,10 @@ class User extends Authenticatable
         static::creating(function ($model) {
             $model->{$model->getKeyName()} = Uuid::uuid4()->toString();
         });
+    }
+
+    public function seller()
+    {
+        return $this->hasOne(Seller::class, 'user_id', 'user_id');
     }
 }
