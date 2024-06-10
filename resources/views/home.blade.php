@@ -9,7 +9,7 @@
   @vite('resources/css/app.css')
 </head>
 
-<body class="bg-gray-300">
+<body class="bg-gray-400">
   <div class="container mx-auto max-w-xl bg-background min-h-screen">
     <div class="p-4 flex justify-between items-center">
       <input type="text" placeholder="Search" class="w-3/4 p-2 rounded border border-text_secondary">
@@ -103,15 +103,18 @@
       <button class="flex-1 bg-gray-300 hover:bg-primary hover:text-white hover:duration-300 p-2 m-1 rounded-lg h-full text-sm">Promo & Diskon</button>
     </div>
     <div class="p-4">
-      <a class="flex bg-white border border-text_secondary rounded-lg p-4 mb-4" href="#">
-        <img src="{{ asset('images/daging_segar.png') }}" alt="Daging Segar" class="w-24 h-24 rounded-lg mr-4">
+      <h1 class="text-2xl font-bold">Produk Terbaru</h1>
+      @foreach($products as $product)
+      <a class="flex bg-white border border-text_secondary rounded-lg p-4 mb-4" href="./product/detail/{{ $product->product_id }}">
+        <img src="" alt="" class="w-24 h-24 rounded-lg mr-4">
         <div>
-          <h3 class="font-bold hover:underline duration-300">Daging Segar Pak Rahmat 500g</h3>
-          <p class="text-green-600 font-bold">Rp50,000</p>
-          <p class="text-gray-600">Rating 4.9 &#9733; 231 Terjual</p>
+          <h3 class="font-bold hover:underline duration-300">{{ $product->product_name }}</h3>
+          <p class="text-green-600 font-bold">Rp{{ number_format($product->product_sell_price, 0, ',', '.') }}</p>
         </div>
       </a>
+      @endforeach
     </div>
+    <div class="p-6"></div>
     <div class="fixed bottom-0 w-full bg-white p-3 flex justify-around max-w-xl">
       <button class="focus:outline-none">
         <svg width="40" height="40" viewBox="0 0 27 26" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -119,11 +122,11 @@
           <path d="M17.7655 2.7005C17.451 2.37338 16.9019 2.59847 16.9019 3.05181V5.82551C16.9019 6.98884 17.8601 7.94601 19.0235 7.94601C19.7566 7.95442 20.7748 7.95653 21.6394 7.95442C22.0822 7.95337 22.3073 7.4243 22.0002 7.10454C20.8905 5.95067 18.9036 3.88276 17.7655 2.7005Z" fill="#34A853" />
         </svg>
       </button>
-      <button class="focus:outline-none">
+      <a class="focus:outline-none" href="./">
         <svg width="40" height="40" viewBox="0 0 27 26" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M9.99066 21.85V18.6338C9.99066 17.8128 10.6611 17.1472 11.4881 17.1472H14.5113C14.9084 17.1472 15.2893 17.3038 15.5701 17.5826C15.851 17.8614 16.0087 18.2395 16.0087 18.6338V21.85C16.0062 22.1913 16.141 22.5195 16.3833 22.7618C16.6255 23.004 16.9552 23.1402 17.299 23.1402H19.3615C20.3248 23.1427 21.2495 22.7646 21.9315 22.0892C22.6135 21.4139 22.9968 20.4969 22.9968 19.5407V10.3782C22.9968 9.60569 22.6519 8.87296 22.055 8.37737L15.0387 2.81442C13.8182 1.83904 12.0694 1.87054 10.8854 2.88921L4.0291 8.37737C3.40402 8.85836 3.03043 9.59326 3.01196 10.3782V19.5313C3.01196 21.5245 4.63955 23.1402 6.64729 23.1402H8.66273C9.37686 23.1402 9.95723 22.5683 9.96241 21.8593L9.99066 21.85Z" fill="#1E1E1E" />
         </svg>
-      </button>
+      </a>
       <a class="focus:outline-none" href="./profile">
         <svg width="40" height="40" viewBox="0 0 27 26" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M5.70169 21.2472C5.70169 17.6456 8.62141 14.7258 12.2231 14.7258H14.9578C18.5595 14.7258 21.4792 17.6456 21.4792 21.2472C21.4792 21.7119 21.1025 22.0887 20.6378 22.0887H6.54316C6.07843 22.0887 5.70169 21.7119 5.70169 21.2472Z" fill="#34A853" />

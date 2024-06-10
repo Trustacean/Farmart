@@ -8,7 +8,7 @@
   @vite('resources/css/app.css')
 </head>
 
-<body class="bg-gray-300">
+<body class="bg-gray-400">
   <div class="container mx-auto max-w-xl bg-background h-screen">
     <div class="flex flex-col justify-between pt-16 pb-10 px-8 h-full">
       <div class="">
@@ -26,19 +26,19 @@
       </div>
       <div class="mt-3 flex flex-col justify-between items-center w-full text-center gap-4 h-5/6">
         <div class="w-full">
-          <form action="{{ route('register') }}" method="POST">
+          <form action="{{ route('seller/register') }}" method="POST">
             @csrf
             <div class="flex flex-col justify-between h-48">
-              <input required type="text" class="w-full h-12 rounded-xl  text-text_secondary text-md px-4 focus:outline-field_border" placeholder="Nama" id="user_name" name="user_name">
+              <input required type="text" class="w-full h-12 rounded-xl  text-text_secondary text-md px-4 focus:outline-field_border" placeholder="Nama" id="store_name" name="store_name">
               <div class="text-left p-2">
                 <p>Alamat Toko</p>
               </div>
               <div class="flex justify-between w-full h-24 rounded-xl bg-white  text-text_secondary text-md px-2 focus:outline-field_border">
                 <div class="flex flex-col justify-center">
                   <p class="w-full text-left">{{ $user->user_address_detail }}</p>
-                  <p class="w-full text-left">{{ $user->user_address }} {{ $user->user_postal_code }}</p>
+                  <p class="w-full text-left">{{ $address }} {{ $user->user_postal_code }}</p>
                 </div>
-                <a class="w-12 flex justify-center items-center">
+                <a class="w-12 flex justify-center items-center" href="../profile/address">
                   <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M9.50002 17.5754H17.1M11.875 3.80039L15.2 6.65039M3.32502 12.3504L12.6915 2.65677C13.7 1.64827 15.3351 1.64826 16.3436 2.65677C17.3521 3.66527 17.3521 5.30038 16.3436 6.30889L6.65002 15.6754L1.90002 17.1004L3.32502 12.3504Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                   </svg>

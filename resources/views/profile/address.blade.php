@@ -9,7 +9,7 @@
   @vite('resources/css/app.css')
 </head>
 
-<body class="bg-gray-300">
+<body class="bg-gray-400">
   <div class="container mx-auto max-w-xl bg-background h-screen">
     <div class="flex flex-col justify-between pt-16 pb-10 px-8">
       <div class="">
@@ -38,8 +38,6 @@
               <select required class="w-full h-12 rounded-xl border border-text_secondary text-text_secondary text-md px-4 focus:outline-field_border" id="city" name="city">
               </select>
               <select required class="w-full h-12 rounded-xl border border-text_secondary text-text_secondary text-md px-4 focus:outline-field_border" id="district" name="district">
-              </select>
-              <select required class="w-full h-12 rounded-xl border border-text_secondary text-text_secondary text-md px-4 focus:outline-field_border" id="subdistrict" name="subdistrict">
               </select>
               <select required class="w-full h-12 rounded-xl border border-text_secondary text-text_secondary text-md px-4 focus:outline-field_border" id="zip_code" name="zip_code">
               </select>
@@ -97,24 +95,6 @@
 
             $('#district').change(function() {
                 var districtId = $(this).val();
-                if (districtId) {
-                    $.ajax({
-                        url: '/get-subdistricts/' + districtId,
-                        type: 'GET',
-                        dataType: 'json',
-                        success: function(data) {
-                            $('#subdistrict').empty();
-                            $('#subdistrict').append('<option value="">Pilih Kelurahan</option>');
-                            $.each(data, function(key, value) {
-                                $('#subdistrict').append('<option value="' + value.id + '">' + value.nama + '</option>');
-                            });
-                        }
-                    });
-                } else {
-                    $('#subdistrict').empty();
-                    $('#subdistrict').append('<option value="">Pilih Kelurahan</option>');
-                }
-
                 var cityId = $('#city').val();
 
                 if (districtId) {

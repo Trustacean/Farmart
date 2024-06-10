@@ -3,6 +3,8 @@
 use App\Http\Controllers\AddressController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\SellerController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,11 +36,6 @@ Route::get('/home', [UserController::class, 'showHomePage'])->name('home');
 
 Route::get('/profile', [UserController::class, 'showProfilePage'])->name('profile');
 
-
-Route::get('/seller/register', function () {
-    return view('seller/register');
-});
-
 Route::get('profile/address', [AddressController::class, 'index'])->name('profile/address');
 
 Route::get('/get-cities/{provinceId}', [AddressController::class, 'getCities']);
@@ -53,6 +50,12 @@ Route::post('/profile/address/update', [UserController::class, 'storeAddress'])-
 
 Route::get('/logout', [UserController::class, 'logout'])->name('logout');
 
-Route::get('/seller/register', [UserController::class, 'showSellerRegisterPage'])->name('seller/register');
+Route::get('/seller/register', [SellerController::class, 'showSellerRegisterPage'])->name('seller/register');
 
-Route::post('/seller/register', [UserController::class, 'storeSeller'])->name('seller/register');
+Route::post('/seller/register', [SellerController::class, 'storeSeller'])->name('seller/register');
+
+Route::get('/seller/store', [SellerController::class, 'showStorePage'])->name('seller/store');
+
+Route::get('/product/detail/{productId}', [ProductController::class, 'showProductDetail'])->name('product/detail');
+
+Route::get('/product/edit/{productId}', [ProductController::class, 'showProductEdit'])->name('product/edit');
