@@ -59,3 +59,5 @@ Route::get('/seller/store', [SellerController::class, 'showStorePage'])->name('s
 Route::get('/product/detail/{productId}', [ProductController::class, 'showProductDetail'])->name('product/detail');
 
 Route::get('/product/edit/{productId}', [ProductController::class, 'showProductEdit'])->name('product/edit');
+
+Route::post('/product/update/{productId}', [ProductController::class, 'updateProduct'])->name('product.update');

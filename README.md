@@ -9,19 +9,26 @@ Farmart is an online market service for farmers in Indonesia, we aim to uhhhhhh.
 
 ## Database Structure
 ### **users**
-|**user_id**|**user_phone**|**user_password**|**user_name**|**user_postal_code**|**user_address_detail**|
+|**user_id**|**user_phone**|**user_password**|**user_name**|**user_postal_code**|**user_address_detail**
 |:-:|:-:|:-:|:-:|:-:|:-:|
-|Varchar(36)|Varchar(13)|Varchar(60)|Varchar(36)|int(5)|Varchar(200)
+|Varchar(36)|Varchar(13)|Varchar(60)|Varchar(36)|int(5)|Varchar(200)|
 
 ### **sellers**
 |**seller_id**|**user_id**|**store_name**|**seller_phone**|**seller_postal_code**|**seller_address_detail**|
 |:-:|:-:|:-:|:-:|:-:|:-:|
-|Varchar(36)|Varchar(36)|Varchar(36)|Varchar(13)|int(5)|Varchar(200)
+|Varchar(36)|Varchar(36)|Varchar(36)|Varchar(13)|int(5)|Varchar(200)|
 
 ### **products**
-|**product_id**|**product_name**|**product_description**|**product_sell_price**|**product_weight**|**product_stock**|**product_picture**|**category_id**|**seller_id**
+|**product_id**|**product_name**|**product_description**|**product_sell_price**|**product_weight**|**product_stock**|**product_picture**|**category_id**|**seller_id**|
 |:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
-|Varchar(36)|Varchar(32)|mediumtext|decimal(65)|int(100)|int(255)|longblob|int(100)|Varchar(36)
+|Varchar(36)|Varchar(32)|mediumtext|decimal(65)|int(100)|int(225)|longblob|int(100)|varchar(36)|
+
+### **categories**
+|**category_id**|**category_name**|
+|:-:|:-:|
+|int(100)|Varchar(50)|
+
+
 
 #### **Explanation**
 **user_id** : Primary Key of Users model, using Hash structure for security\
