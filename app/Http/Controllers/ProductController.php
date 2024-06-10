@@ -87,4 +87,28 @@ class ProductController extends Controller
 
         return redirect('/seller/store');
     }
+
+    public function deleteProduct($product_id)
+    {
+        $user = User::where('user_id', session('user_id'))->first();
+
+        if (!$user) {
+            return redirect('/home');
+        }
+
+        $seller = Seller::where('user_id', $user->user_id)->first();
+
+        if (!$seller) {
+            return redirect('/home');
+        }
+
+        if ($seller->seller_id != Product::where('product_id', $product_id)->first()->seller_id) {
+            return redirect('/home');
+        }
+
+        $product = Product::where('product_id', $product_id)->first();
+        $product->delete();
+
+        return redirect('/seller/store');
+    }
 }

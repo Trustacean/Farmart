@@ -37,7 +37,7 @@
             </div>
             <div class="mt-4 flex justify-between items-center">
               <a href="/product/edit/{{ $product->product_id }}" class="bg-primary text-white p-2 rounded">Edit</a>
-              <a href="#" class="bg-red-500 text-white p-2 rounded">Delete</a>
+              <a href="/product/delete/{{ $product->product_id }}" class="bg-red-500 text-white p-2 rounded">Delete</a>
             </div>
           </div>
           @endforeach
