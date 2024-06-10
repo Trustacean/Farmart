@@ -12,10 +12,10 @@
 <body class="bg-gray-400">
   <div class="container mx-auto max-w-xl bg-background min-h-screen">
     <div class="p-4 flex justify-between gap-3 items-center">
-      <input type="text" placeholder="Search" class="w-3/4 p-2 rounded rounded-xl shadow shadow-xl">
+      <input type="text" placeholder="Search" class="w-3/4 p-2 rounded-xl shadow-xl">
       <div class="flex space-x-4">
         <a href="{{ route('cart') }}" class="">
-          <svg width="47" height="47" viewBox="0 0 47 47" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <svg width="45" height="45" viewBox="0 0 47 47" fill="none" xmlns="http://www.w3.org/2000/svg">
             <rect x="0.5" y="0.5" width="46" height="46" rx="6.5" fill="#3FB860" />
             <rect x="0.5" y="0.5" width="46" height="46" rx="6.5" stroke="#2F994C" />
             <path d="M20.375 32.8749C21.5256 32.8749 22.4584 31.9422 22.4584 30.7916C22.4584 29.641 21.5256 28.7083 20.375 28.7083C19.2244 28.7083 18.2917 29.641 18.2917 30.7916C18.2917 31.9422 19.2244 32.8749 20.375 32.8749Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
