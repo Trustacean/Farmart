@@ -11,63 +11,52 @@
 
 <body class="bg-slate-900">
   <div class="bg-background h-screen flex flex-col">
-    <a href="{{url()->previous()}}
-    " class="border-b">
+    <div class="border-b">
       <button class="p-4 flex items-center justify-start">
         <svg class="w-6 h-6 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
         </svg>
-        <span class="text-lg font-bold text-secondary ml-2">Kembali </span>
+        <span class="text-lg font-bold text-secondary ml-2">Kembali</span>
       </button>
-    </a>
+    </div>
     <div class="flex flex-col gap-2 p-4 overflow-y-auto flex-1">
-      @foreach($cartItems as $item)
+      @foreach($cartItems as $cart)
       <div class="p-4 bg-white shadow-md">
         <div class="flex items-center justify-between p-4 rounded-lg">
           <div class="flex items-center space-x-2">
             <!-- Menceklist semua item di toko -->
             <input type="checkbox" class="select-store form-checkbox">
-            <label class="text-black font-bold">
-              {{ $item['seller_name'] }}
-            </label>
+            <label class="text-black font-bold">{{ $cart['toko'] }}</label>
           </div>
-          <form action="{{ route('cart.remove', $item['product_id'] ) }}" method="POST">
-            @csrf
-            <button type="submit" class="p-4 bg-primary rounded-lg">
-              <img class="h-5" src="/icons/Trash.svg" alt="Trash">
-            </button>
-          </form>
+          <button class="p-1 p-4 bg-primary rounded-lg">
+            <img class="h-5" src="/icons/Trash.svg" alt="Trash">
+          </button>
         </div>
+        @foreach($cart['items'] as $item)
         <div class="mt-1 p-4 rounded-lg bg-background">
           <div class="flex items-center space-x-2">
             <!-- Menceklist per item -->
-            <input type="checkbox" class="select-item form-checkbox" data-price="">
-            <img src="" alt="Product" class="rounded-lg w-16 h-16">
+            <input type="checkbox" class="select-item form-checkbox" data-price="{{ $item['price'] }}">
+            <img src="{{ asset($item['image']) }}" alt="Product" class="rounded-lg w-16 h-16">
             <div class="flex flex-col">
               <span>
-                <span class="font-bold">
-                  {{ $item['name'] }}
-                </span>
+                <span class="font-bold">{{ $item['nama'] }}</span> | {{ $cart['toko'] }}
               </span>
               <div class="flex items-center space-x-2">
-                <span class="text-primary font-bold">
-                  Rp{{ number_format($item['price'], 0, ',', '.') }}
-                </span>
-                <span class="text-secondary line-through">
-                  Rp{{ number_format($item['price'], 0, ',', '.') }}
-                </span>
+                <span class="text-primary font-bold">Rp{{ number_format($item['price'], 0, ',', '.') }}</span>
+                <span class="text-secondary line-through">Rp{{ number_format($item['old_price'], 0, ',', '.') }}</span>
               </div>
             </div>
           </div>
           <div class="mt-4 flex justify-end">
             <div class="flex items-center">
               <button class="bg-gray-300 text-black px-2 py-1 rounded-l-lg quantity-decrease">-</button>
-              <span class="quantity-value text-center w-12"> {{ $item['quantity'] }}
-              </span>
+              <span class="quantity-value text-center w-12">1</span>
               <button class="bg-gray-300 text-black px-2 py-1 rounded-r-lg quantity-increase">+</button>
             </div>
           </div>
         </div>
+        @endforeach
       </div>
       @endforeach
     </div>

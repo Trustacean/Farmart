@@ -104,14 +104,14 @@
       </div>
     </div>
     <div class="relative">
-      <div class=" w-full h-[80px] flex flex-row px-2 py-2 gap-2 absolute bottom-0 left-0 bg-neutral-300">
-        <button class=" h-[50px] w-full bg-white rounded-lg px-2 border-primary  text-primary border">
-          <p class="font-semibold">Masukan Keranjang</p>
-        </button>
-        <button class=" h-[50px] w-full bg-primary rounded-lg px-2  text-white border">
-          <p class="font-semibold">Beli Sekarang</p>
-        </button>
-      </div>
+      <form action="{{ route('cart/add', $product->product_id) }}" method="POST">
+        @csrf
+        <div class=" w-full h-[80px] flex flex-row px-2 py-2 gap-2 absolute bottom-0 left-0 bg-neutral-300">
+          <button class=" h-[50px] w-full bg-white rounded-lg px-2 border-primary  text-primary border">
+            <p class="font-semibold">Masukan Keranjang</p>
+          </button>
+        </div>
+      </form>
     </div>
   </div>
 </body>

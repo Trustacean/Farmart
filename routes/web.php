@@ -37,6 +37,10 @@ Route::get('/home', [UserController::class, 'showHomePage'])->name('home');
 
 Route::get('/category/{category}', [UserController::class, 'showCategorizedPage'])->name('category');
 
+Route::post('/cart/remove/{productId}', [CartController::class, 'removeCart'])->name('cart.remove');
+
+Route::post('/cart/add/{productId}', [CartController::class, 'addCart'])->name('cart/add');
+
 Route::get('/profile', [UserController::class, 'showProfilePage'])->name('profile');
 
 Route::get('profile/address', [AddressController::class, 'index'])->name('profile/address');

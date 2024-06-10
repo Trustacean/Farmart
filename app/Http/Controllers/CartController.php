@@ -3,67 +3,67 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
+use App\Models\Seller;
+use App\Models\Product;
+use App\Models\Cart;
 
 class CartController extends Controller
 {
+
+    public function addCart($productId)
+    {
+        $user = User::where('user_id', session('user_id'))->first();
+        $cart = Cart::where('user_id', $user->user_id)
+            ->where('product_id', $productId)
+            ->first();
+
+        if ($cart) {
+            // Update the existing cart item
+            Cart::where('user_id', $user->user_id)
+                ->where('product_id', $productId)
+                ->update(['quantity' => $cart->quantity + 1]);
+        } else {
+            // Create a new cart item
+            Cart::create([
+                'user_id' => $user->user_id,
+                'product_id' => $productId,
+                'quantity' => 1
+            ]);
+        }
+        return redirect('/cart');
+    }
+
+    public function removeCart($productId)
+    {
+        $user = User::where('user_id', session('user_id'))->first();
+
+
+        Cart::where('user_id', $user->user_id)
+            ->where('product_id', $productId)
+            ->delete();
+            
+        return redirect('/cart');
+    }
+
     public function index()
     {
-        // Data dummy untuk halaman cart
-        $cartItems = [
-            [
-                'toko' => 'Daging Segar Pak Rahmat',
-                'items' => [
-                    [
-                        'nama' => 'Daging Sapi Berkualitas',
-                        'price' => 60000,
-                        'old_price' => 80000,
-                        'image' => 'images/image 64.png',
-                    ],
-                    [
-                        'nama' => 'Daging Ayam Segar',
-                        'price' => 40000,
-                        'old_price' => 50000,
-                        'image' => 'images/image 64.png',
-                    ]
-                ]
-            ],
-            [
-                'toko' => 'Peternakan Bu Aminah',
-                'items' => [
-                    [
-                        'nama' => 'Ayam Kampung Organik',
-                        'price' => 45000,
-                        'old_price' => 60000,
-                        'image' => 'images/image66.png',
-                    ],
-                    [
-                        'nama' => 'Telur Bebek Segar',
-                        'price' => 25000,
-                        'old_price' => 30000,
-                        'image' => 'images/image 67.png',
-                    ]
-                ]
-            ],
-            [
-                'toko' => 'Kebun Pak Budi',
-                'items' => [
-                    [
-                        'nama' => 'Sayuran Hijau Segar',
-                        'price' => 30000,
-                        'old_price' => 40000,
-                        'image' => 'images/image68.png',
-                    ],
-                    [
-                        'nama' => 'Buah Apel Merah',
-                        'price' => 50000,
-                        'old_price' => 60000,
-                        'image' => 'images/image69.png',
-                    ]
-                ]
-            ]
-        ];
+        $user = User::where('user_id', session('user_id'))->first();
+        $carts = Cart::where('user_id', $user->user_id)->get();
+        $cartItems = [];
 
-        return view('cart', compact('cartItems'));
+        foreach ($carts as $cart) {
+            $product = Product::where('product_id', $cart->product_id)->first();
+            $cartItems[] = [
+                'product_id' => $product->product_id,
+                'seller_name' => Seller::where('seller_id', $product->seller_id)->first()->store_name,
+                'name' => $product->product_name,
+                'price' => $product->product_sell_price,
+                'quantity' => $cart->quantity
+            ];
+        }
+
+        return view('cart', ['cartItems' => $cartItems, 'user' => $user]);
     }
 
     // Dummy data untuk halaman checkout
