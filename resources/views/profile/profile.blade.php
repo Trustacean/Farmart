@@ -44,7 +44,7 @@
       </div>
       <div
         class="mt-5 flex justify-between w-full shadow drop-shadow-lg h-[80px] rounded-xl bg-white
-        text-text_secondary text-md px-4">
+        text-text_secondary text-md p-2 px-4">
         <div class="flex justify-center items-center">
           <img src="/icons/Toko.svg" alt="Icon Toko" class="h-8">
           <div class="flex justify-start">
@@ -66,15 +66,15 @@
       </div>
 
       <div
-        class="mt-5 flex justify-between w-full shadow drop-shadow-lg h-[80px] rounded-xl bg-white
-        text-text_secondary text-md px-4">
+        class="mt-5 flex justify-between w-full shadow drop-shadow-lg rounded-xl bg-white
+        text-text_secondary text-md p-2 px-4">
         <div class="flex justify-center items-center">
           <img src="/icons/Alamat.svg" alt="Icon Alamat" class="h-8">
           <div class="flex-grow">
             <span class="mb-3 font-medium text-xl text-text_primary px-4">Alamat</span>
-            <p class="text-sm">{{ $user->user_address_detail }}</p>
-            <p class="text-sm">{{ $address }} {{ $user->user_postal_code }}</p>
-            <p class="text-sm">{{ $user->user_address }} {{ $user->user_postal_code }}</p>
+            <p class="text-sm px-4">{{ $user->user_address_detail }}</p>
+            <p class="text-sm px-4">{{ $address }} {{ $user->user_postal_code }}</p>
+            <p class="text-sm px-4">{{ $user->user_address }}</p>
           </div>
         </div>
         <a class="w-12 flex justify-center items-center" href="./profile/address">
