@@ -32,7 +32,7 @@
               <select required class="w-full h-12 rounded-xl border border-text_secondary text-text_secondary text-md px-4 focus:outline-field_border" id="province" name="province">
                 <option value="">Pilih Provinsi</option>
                 @foreach($provinces as $province)
-                <option value="{{ $province['id'] }}">{{ $province['text'] }}</option>
+                <option value="{{ $province['id'] }}">{{ $province['nama'] }}</option>
                 @endforeach
               </select>
               <select required class="w-full h-12 rounded-xl border border-text_secondary text-text_secondary text-md px-4 focus:outline-field_border" id="city" name="city">
@@ -52,101 +52,92 @@
     </div>
   </div>
   <script>
-    $('#province').change(function() {
-      var provinceId = $(this).val();
-      var citySelect = $('#city');
-      var districtSelect = $('#district');
-      var subdistrictSelect = $('#subdistrict');
-      var zipCodeSelect = $('#zip_code');
+        $(document).ready(function() {
+            $('#province').change(function() {
+                var provinceId = $(this).val();
+                if (provinceId) {
+                    $.ajax({
+                        url: '/get-cities/' + provinceId,
+                        type: 'GET',
+                        dataType: 'json',
+                        success: function(data) {
+                            $('#city').empty();
+                            $('#city').append('<option value="">Pilih Kota</option>');
+                            $.each(data, function(key, value) {
+                                $('#city').append('<option value="' + value.id + '">' + value.nama + '</option>');
+                            });
+                        }
+                    });
+                } else {
+                    $('#city').empty();
+                    $('#city').append('<option value="">Pilih Kota</option>');
+                }
+            });
 
-      $.ajax({
-        url: '/get-cities/' + provinceId,
-        type: 'GET',
-        success: function(response) {
-          // Clear previous options
-          citySelect.empty().append('<option value="">Pilih Kabupaten/Kota</oprion>');
-          citySelect.empty().append('<option value="">Pilih Kabupaten/Kota</option>');
-          districtSelect.empty().append('<option value="">Pilih Kecamatan</option>');
-          subdistrictSelect.empty().append('<option value="">Pilih Kelurahan/Desa</option>');
-          zipCodeSelect.empty().append('<option value="">Pilih Kode Pos</option>');
-          // Add fetched cities
-          response.forEach(function(city) {
-            citySelect.append('<option value="' + city.id + '">' + city.text + '</option>');
-          });
-        },
-        error: function(xhr, status, error) {
-          console.error(error);
-        }
-      });
-    });
+            $('#city').change(function() {
+                var cityId = $(this).val();
+                if (cityId) {
+                    $.ajax({
+                        url: '/get-districts/' + cityId,
+                        type: 'GET',
+                        dataType: 'json',
+                        success: function(data) {
+                            $('#district').empty();
+                            $('#district').append('<option value="">Pilih Kecamatan</option>');
+                            $.each(data, function(key, value) {
+                                $('#district').append('<option value="' + value.id + '">' + value.nama + '</option>');
+                            });
+                        }
+                    });
+                } else {
+                    $('#district').empty();
+                    $('#district').append('<option value="">Pilih Kecamatan</option>');
+                }
+            });
 
-    $('#city').change(function() {
-      var cityId = $(this).val();
-      var districtSelect = $('#district');
-      var subdistrictSelect = $('#subdistrict');
-      var zipCodeSelect = $('#zip_code');
+            $('#district').change(function() {
+                var districtId = $(this).val();
+                if (districtId) {
+                    $.ajax({
+                        url: '/get-subdistricts/' + districtId,
+                        type: 'GET',
+                        dataType: 'json',
+                        success: function(data) {
+                            $('#subdistrict').empty();
+                            $('#subdistrict').append('<option value="">Pilih Kelurahan</option>');
+                            $.each(data, function(key, value) {
+                                $('#subdistrict').append('<option value="' + value.id + '">' + value.nama + '</option>');
+                            });
+                        }
+                    });
+                } else {
+                    $('#subdistrict').empty();
+                    $('#subdistrict').append('<option value="">Pilih Kelurahan</option>');
+                }
 
-      $.ajax({
-        url: '/get-districts/' + cityId,
-        type: 'GET',
-        success: function(response) {
-          // Clear previous options
-          districtSelect.empty().append('<option value="">Pilih Kecamatan</option>');
-          subdistrictSelect.empty().append('<option value="">Pilih Kelurahan/Desa</option>');
-          zipCodeSelect.empty().append('<option value="">Pilih Kode Pos</option>');
-          // Add fetched districts
-          response.forEach(function(district) {
-            districtSelect.append('<option value="' + district.id + '">' + district.text + '</option>');
-          });
-        },
-        error: function(xhr, status, error) {
-          console.error(error);
-        }
-      });
-    });
+                var cityId = $('#city').val();
 
-    $('#district').change(function() {
-      var districtId = $(this).val();
-      var subdistrictSelect = $('#subdistrict');
-      var zipCodeSelect = $('#zip_code');
-
-      $.ajax({
-        url: '/get-subdistricts/' + districtId,
-        type: 'GET',
-        success: function(response) {
-          // Clear previous options
-          subdistrictSelect.empty().append('<option value="">Pilih Kelurahan/Desa</option>');
-          // Add fetched subdistricts
-          response.forEach(function(subdistrict) {
-            subdistrictSelect.append('<option value="' + subdistrict.id + '">' + subdistrict.text + '</option>');
-          });
-        },
-        error: function(xhr, status, error) {
-          console.error(error);
-        }
-      });
-    });
-
-    $('#district').change(function() {
-      var cityId = $('#city').val();
-      var districtId = $('#district').val();
-      var zipCodeSelect = $('#zip_code');
-
-      $.ajax({
-        url: '/get-zip-codes/' + cityId + '/' + districtId,
-        type: 'GET',
-        success: function(response) {
-          zipCodeSelect.empty();
-          zipCodeSelect.append('<option value="">Pilih Kode Pos</option>');
-          response.forEach(function(zipCode) {
-            zipCodeSelect.append('<option value="' + zipCode.id + '">' + zipCode.text + '</option>');
-          });
-        },
-        error: function(xhr, status, error) {
-          console.error(error);
-        }
-      });
-    });
+                if (districtId) {
+                    $.ajax({
+                        url: '/get-zip-codes/' + cityId + '/' + districtId,
+                        type: 'GET',
+                        dataType: 'json',
+                        success: function(data) {
+                            $('#zip_code').empty();
+                            $('#zip_code').append('<option value="">Pilih Kode Pos</option>');
+                            $.each(data, function(key, value) {
+                                $('#zip_code').append('<option value="' + value.kodepos + '">' + value.kodepos + '</option>');
+                            });
+                        }
+                    });
+                } else {
+                    $('#zip_code').empty();
+                    $('#zip_code').append('<option value="">Pilih Kode Pos</option>');
+                }
+            });
+            
+            // Add similar AJAX requests for district, subdistrict, and zip code changes
+        });
   </script>
 
 </body>

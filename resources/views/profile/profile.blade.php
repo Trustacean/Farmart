@@ -68,7 +68,7 @@
           <div class="flex-grow">
             <span class="mb-3 font-bold text-xl text-text_primary">Alamat</span>
             <p class="text-sm">{{ $user->user_address_detail }}</p>
-            <p class="text-sm">User_Address</p>
+            <p class="text-sm">{{ $user->user_address }} {{ $user->user_postal_code }}</p>
           </div>
         </div>
         <a class="w-12 flex justify-center items-center" href="./profile/address">

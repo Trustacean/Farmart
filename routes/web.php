@@ -47,7 +47,7 @@ Route::get('/get-districts/{cityId}', [AddressController::class, 'getDistricts']
 
 Route::get('/get-subdistricts/{districtId}', [AddressController::class, 'getSubDistricts']);
 
-Route::get('/get-zip-codes/{districtId}/{subDistrictId}', [AddressController::class, 'getZipCode']);
+Route::get('/get-zip-codes/{cityId}/{districtId}', [AddressController::class, 'getZipCode']);
 
 Route::post('/profile/address/update', [UserController::class, 'storeAddress'])->name('profile/address/update');
 
