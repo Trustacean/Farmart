@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use App\Models\Province;
 use App\Models\City;
+use App\Models\District;
+use App\Models\Subdistrict;
 use App\Models\Zipcode;
 use App\Models\User;
 use App\Models\Seller;
@@ -98,7 +100,15 @@ class UserController extends Controller
     {
         $user = User::where('user_id', session('user_id'))->first();
         $user->user_postal_code = $request->zip_code;
+
+        $province = Province::where('id', $request->province)->first();
+        $city = City::where('id', $request->city)->first();
+        $district = District::where('id', $request->district)->first();
+        $subdistrict = Subdistrict::where('id', $request->subdistrict)->first();
+
+        $user->user_address = $province->nama . ', ' . $city->nama . ', ' . $district->nama . ', ' . $subdistrict->nama;
         $user->user_address_detail = $request->user_address_detail;
+      
         $user->save();
         return redirect('/profile');
     }

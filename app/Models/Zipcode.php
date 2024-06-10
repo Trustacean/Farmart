@@ -12,14 +12,4 @@ class Zipcode extends Model
     protected $table = 'd_kodepos';
     protected $primaryKey = 'id';
     protected $fillable = ['id', 'd_kabkota_id', 'd_kecatmatan_id', 'kodepos'];
-
-    public function district()
-    {
-        return $this->belongsTo(District::class, 'd_kecamatan_id', 'id');
-    }
-
-    public function city()
-    {
-        return $this->belongsTo(City::class, 'd_kabkota_id', 'id');
-    }
 }
