@@ -9,7 +9,7 @@
   <!-- <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"> -->
     @vite('resources/css/app.css')
 </head>
-<body class="bg-gray-300">
+<body class="bg-gray-400">
     <div class="container mx-auto max-w-xl bg-white min-h-screen p-4 rounded-lg">
   <!-- Header -->
   <!-- <header class="bg-white shadow p-4"> -->
