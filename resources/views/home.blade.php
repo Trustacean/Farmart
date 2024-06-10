@@ -12,7 +12,7 @@
 <body class="bg-gray-400">
   <div class="container mx-auto max-w-xl bg-background min-h-screen">
     <div class="p-4 flex justify-between gap-3 items-center">
-      <input type="text" placeholder="Search" class="w-3/4 p-2 rounded border border-text_secondary">
+      <input type="text" placeholder="Search" class="w-3/4 p-2 rounded rounded-xl shadow shadow-xl">
       <div class="flex space-x-4">
         <a href="{{ route('cart') }}" class="">
           <svg width="47" height="47" viewBox="0 0 47 47" fill="none" xmlns="http://www.w3.org/2000/svg">
