@@ -29,10 +29,14 @@ class ProductController extends Controller
     {
         $user = User::where('user_id', session('user_id'))->first();
 
+        if (!$user) {
+            return redirect('/home');
+        }
+
         $seller = Seller::where('user_id', $user->user_id)->first();
 
         if (!$seller) {
-            return redirect('/seller/register');
+            return redirect('/home');
         }
 
         if ($seller->seller_id != Product::where('product_id', $productId)->first()->seller_id) {
@@ -42,5 +46,18 @@ class ProductController extends Controller
         $product = Product::where('product_id', $productId)->first();
         $categories = Category::all();
         return view('product/edit', ['product' => $product, 'categories' => $categories]);
+    }
+
+    public function updateProduct($product_id)
+    {
+        $product = Product::where('product_id', $product_id)->first();
+        $product->product_name = request('product_name');
+        $product->product_sell_price = request('product_sell_price');
+        $product->product_stock = request('product_stock');
+        $product->product_description = request('product_description');
+        $product->category_id = request('product_category');
+        $product->save();
+
+        return redirect('/seller/store');
     }
 }

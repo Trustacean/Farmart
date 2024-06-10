@@ -23,7 +23,7 @@
     </div>
     <div class="h-full overflow-y-auto flex-grow">
       <div class="p-4">
-        <h1 class="text-2xl font-bold">Produk {{ $seller }}</h1>
+        <h1 class="text-2xl font-bold">Produk {{ $seller->store_name }}</h1>
         <div class="grid grid-cols-2 gap-4 mt-4">
           @foreach($products as $product)
           <div class="bg-white p-4 rounded-lg shadow-md">

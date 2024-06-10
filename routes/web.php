@@ -61,6 +61,8 @@ Route::get('/product/detail/{productId}', [ProductController::class, 'showProduc
 
 Route::get('/product/edit/{productId}', [ProductController::class, 'showProductEdit'])->name('product/edit');
 
+Route::post('/product/update/{productId}', [ProductController::class, 'updateProduct'])->name('product.update');
+
 Route::get('cart', [CartController::class, 'index'])->name('cart');
 
 Route::get('checkout', [CartController::class, 'checkout'])->name('checkout');
