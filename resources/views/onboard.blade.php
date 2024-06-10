@@ -8,10 +8,11 @@
   @vite('resources/css/app.css')
 </head>
 
-<body class="bg-slate-900">
+<body class="bg-gray-300">
   <div class="container mx-auto max-w-xl bg-gray-300">
-    <div class="relative h-screen">
-      <div class="bg-background absolute bottom-0 w-full h-2/5 min-h-96 rounded-t-xl">
+    <div class="bg-background relative h-screen">
+    <img src="{{ asset('images/banner_image.png') }}" alt="Banner" class="object-cover w-full h-full absolute inset-0">
+    <div class="bg-background absolute bottom-0 w-full h-2/5 min-h-96 rounded-t-xl">
         <div class="absolute w-full">
           <svg class="-my-16 mx-auto" width="140" height="140" viewBox="0 0 86 87" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
             <rect x="1" y="1.5" width="84" height="84" rx="42" fill="url(#pattern0_71_613)" stroke="white" stroke-width="2" />
@@ -29,8 +30,8 @@
             <p class="text-lg text-secondary">Agrobisnis Terbaik Di Nusantara</p>
           </div>
           <div class="flex flex-row justify-between items-center w-full text-center gap-4 h-1/4 px-8">
-            <a href="./register" class="flex items-center justify-center bg-background w-full h-12 rounded-xl border-2 border-primary text-primary text-lg">Daftar</a>
-            <a href="./login" class="flex items-center justify-center bg-primary w-full h-12 rounded-xl text-background text-lg">Masuk</a>
+            <a href="./register" class="flex items-center justify-center bg-background w-full h-12 rounded-xl border-2 border-primary text-primary duration-300 text-lg">Daftar</a>
+            <a href="./login" class="flex items-center justify-center bg-primary w-full h-12 rounded-xl text-background hover:bg-white border-primary border-2 hover:text-primary duration-300 text-lg">Masuk</a>
           </div>
         </div>
       </div>
