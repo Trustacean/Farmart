@@ -14,7 +14,8 @@
     <a href="{{URL::previous()}}
     " class="border-b">
       <button class="p-4 flex items-center justify-start">
-        <svg class="w-6 h-6 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <svg class="w-6 h-6 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
         </svg>
         <span class="text-lg font-bold text-secondary ml-2">Kembali </span>
@@ -23,53 +24,53 @@
     <div class="flex flex-col gap-2 p-4 overflow-y-auto flex-1">
       @foreach($cartItems as $item)
       <div class="p-4 bg-white shadow-md">
-        <div class="flex items-center justify-between p-4 rounded-lg">
-          <div class="flex items-center space-x-2">
-            <!-- Menceklist semua item di toko -->
-            <input type="checkbox" class="select-store form-checkbox">
-            <label class="text-black font-bold">
-              {{ $item['seller_name'] }}
-            </label>
-          </div>
-          <form action="{{ route('cart.remove', $item['product_id'] ) }}" method="POST">
-            @csrf
-            <button type="submit" class="p-4 bg-primary rounded-lg">
-              <img class="h-5" src="/icons/Trash.svg" alt="Trash">
-            </button>
-          </form>
+      <div class="flex items-center justify-between p-4 rounded-lg">
+        <div class="flex items-center space-x-2">
+        <!-- Menceklist semua item di toko -->
+        <input type="checkbox" class="select-store form-checkbox">
+        <label class="text-black font-bold">
+          {{ $item['seller_name'] }}
+        </label>
         </div>
-        <div class="mt-1 p-4 rounded-lg bg-background">
+        <form action="{{ route('cart.remove', $item['product_id']) }}" method="POST">
+        @csrf
+        <button type="submit" class="p-4 bg-primary rounded-lg">
+          <img class="h-5" src="/icons/Trash.svg" alt="Trash">
+        </button>
+        </form>
+      </div>
+      <div class="mt-1 p-4 rounded-lg bg-background">
+        <div class="flex items-center space-x-2">
+        <!-- Menceklist per item -->
+        <input type="checkbox" class="select-item form-checkbox" data-price="{{$item['price']}}">
+        <img src="" alt="Product" class="rounded-lg w-16 h-16">
+        <div class="flex flex-col">
+          <span>
+          <span class="font-bold">
+            {{ $item['name'] }}
+          </span>
+          </span>
           <div class="flex items-center space-x-2">
-            <!-- Menceklist per item -->
-            <input type="checkbox" class="select-item form-checkbox" data-price="">
-            <img src="" alt="Product" class="rounded-lg w-16 h-16">
-            <div class="flex flex-col">
-              <span>
-                <span class="font-bold">
-                  {{ $item['name'] }}
-                </span>
-              </span>
-              <div class="flex items-center space-x-2">
-                <span class="text-primary font-bold">
-                  Rp{{ number_format($item['price'], 0, ',', '.') }}
-                </span>
-                <span class="text-secondary line-through">
-                  Rp{{ number_format($item['price'], 0, ',', '.') }}
-                </span>
-              </div>
-            </div>
+          <span class="text-primary font-bold">
+            Rp{{ number_format($item['price'], 0, ',', '.') }}
+          </span>
+          <span class="text-secondary line-through">
+            Rp{{ number_format($item['price'], 0, ',', '.') }}
+          </span>
           </div>
-          <div class="mt-4 flex justify-end">
-            <div class="flex items-center">
-              <button class="bg-gray-300 text-black px-2 py-1 rounded-l-lg quantity-decrease">-</button>
-              <span class="quantity-value text-center w-12"> {{ $item['quantity'] }}
-              </span>
-              <button class="bg-gray-300 text-black px-2 py-1 rounded-r-lg quantity-increase">+</button>
-            </div>
-          </div>
+        </div>
+        </div>
+        <div class="mt-4 flex justify-end">
+        <div class="flex items-center">
+          <button class="bg-gray-300 text-black px-2 py-1 rounded-l-lg quantity-decrease">-</button>
+          <span class="quantity-value text-center w-12"> {{ $item['quantity'] }}
+          </span>
+          <button class="bg-gray-300 text-black px-2 py-1 rounded-r-lg quantity-increase">+</button>
+        </div>
         </div>
       </div>
-      @endforeach
+      </div>
+    @endforeach
     </div>
     <div class="bg-white shadow-md px-4 py-4 border-t bottom-0 left-0 right-0">
       <div class="flex justify-between items-center">
@@ -86,7 +87,7 @@
   </div>
 
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
       const selectAllCheckbox = document.getElementById('select-all');
       const storeCheckboxes = document.querySelectorAll('.select-store');
       const itemCheckboxes = document.querySelectorAll('.select-item');
@@ -101,13 +102,13 @@
           if (checkbox.checked) {
             const quantity = parseInt(quantityValues[index].textContent, 10);
             const price = parseFloat(checkbox.getAttribute('data-price'));
-            totalPrice += price * quantity;
+              totalPrice += price * quantity;
           }
         });
         totalPriceElement.textContent = `Total Rp${totalPrice.toLocaleString('id-ID')}`;
       };
 
-      selectAllCheckbox.addEventListener('change', function() {
+      selectAllCheckbox.addEventListener('change', function () {
         const isChecked = selectAllCheckbox.checked;
         storeCheckboxes.forEach((storeCheckbox) => {
           storeCheckbox.checked = isChecked;
@@ -120,7 +121,7 @@
       });
 
       storeCheckboxes.forEach(storeCheckbox => {
-        storeCheckbox.addEventListener('change', function() {
+        storeCheckbox.addEventListener('change', function () {
           const isChecked = storeCheckbox.checked;
           const storeItems = storeCheckbox.closest('.p-4.bg-white.shadow-md').querySelectorAll('.select-item');
           storeItems.forEach(itemCheckbox => {
@@ -131,7 +132,7 @@
       });
 
       itemCheckboxes.forEach(itemCheckbox => {
-        itemCheckbox.addEventListener('change', function() {
+        itemCheckbox.addEventListener('change', function () {
           updateTotalPrice();
           const storeCheckbox = itemCheckbox.closest('.p-4.bg-white.shadow-md').querySelector('.select-store');
           const allItemsChecked = Array.from(itemCheckbox.closest('.p-4.bg-white.shadow-md').querySelectorAll('.select-item')).every(checkbox => checkbox.checked);
