@@ -3,6 +3,7 @@
 use App\Http\Controllers\AddressController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\SellerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,7 +22,6 @@ Route::get('/', function () {
     return view('onboard');
 });
 Route::get('/', [UserController::class, 'showOnboardPage'])->name('onboard');
-
 
 Route::get('/register', [UserController::class, 'showRegisterPage'])->name('register');
 
@@ -48,12 +48,12 @@ Route::get('/get-districts/{cityId}', [AddressController::class, 'getDistricts']
 
 Route::get('/get-subdistricts/{districtId}', [AddressController::class, 'getSubDistricts']);
 
-Route::get('/get-zip-codes/{districtId}/{subDistrictId}', [AddressController::class, 'getZipCode']);
+Route::get('/get-zip-codes/{cityId}/{districtId}', [AddressController::class, 'getZipCode']);
 
 Route::post('/profile/address/update', [UserController::class, 'storeAddress'])->name('profile/address/update');
 
 Route::get('/logout', [UserController::class, 'logout'])->name('logout');
 
-Route::get('/seller/register', [UserController::class, 'showSellerRegisterPage'])->name('seller/register');
+Route::get('/seller/register', [SellerController::class, 'showSellerRegisterPage'])->name('seller/register');
 
-Route::post('/seller/register', [UserController::class, 'storeSeller'])->name('seller/register');
+Route::post('/seller/register', [SellerController::class, 'storeSeller'])->name('seller/register');

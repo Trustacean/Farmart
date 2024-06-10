@@ -4,7 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Http;
+use App\Models\Province;
+use App\Models\City;
+use App\Models\District;
+use App\Models\Subdistrict;
+use App\Models\Zipcode;
 use App\Models\User;
 
 class UserController extends Controller
@@ -47,15 +51,13 @@ class UserController extends Controller
         }
 
         $user = User::where('user_id', session('user_id'))->first();
-        return view('profile/profile', ['user' => $user]);
-    }
+        $zipcode = $user->user_postal_code;
+        $district = Zipcode::where('kodepos', $zipcode)->first();
+        $city = City::where('id', $district->d_kabkota_id)->first();
+        $province = Province::where('id', $city->d_provinsi_id)->first();
 
-    public function showSellerRegisterPage()
-    {
-        if (!session()->has('user_id')) {
-            return redirect('/login');
-        }
-        return view('seller/register');
+        $address = $province->nama . ', ' . $city->nama . ', ' . $district->nama;
+        return view('profile/profile', ['user' => $user ,'address' => $address]);
     }
 
     public function showEditAddressPage()
@@ -77,13 +79,10 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $user = new User();
-        $user->user_id = uniqid();
+        $user->user_id = uniqid('user');
         $user->user_phone = $request->user_phone;
         $user->user_password = Hash::make($request->user_password);
         $user->user_name = $request->user_name;
-        $user->user_postal_code = 0;
-        $user->user_address = '';
-        $user->user_address_detail = '';
         $user->save();
         return redirect('/login');
     }
@@ -92,7 +91,6 @@ class UserController extends Controller
     {
         $user = User::where('user_id', session('user_id'))->first();
         $user->user_postal_code = $request->zip_code;
-        $user->user_address = $request->subdistrict . ', ' . $request->district . ', ' . $request->city . ', ' . $request->province;
         $user->user_address_detail = $request->user_address_detail;
         $user->save();
         return redirect('/profile');
