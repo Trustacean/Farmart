@@ -86,7 +86,7 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $user = new User();
-        $user->user_id = uniqid('user');
+        $user->user_id = uniqid();
         $user->user_phone = $request->user_phone;
         $user->user_password = Hash::make($request->user_password);
         $user->user_name = $request->user_name;

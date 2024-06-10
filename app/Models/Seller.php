@@ -2,14 +2,12 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Ramsey\Uuid\Uuid;
 
-class Seller extends Model
+class Seller extends Authenticatable
 {
-    use HasFactory;
-    public $timestamps = false;
-
+    
     protected $table = 'sellers';
     protected $primaryKey = 'seller_id';
     protected $fillable = [
@@ -20,4 +18,15 @@ class Seller extends Model
         'seller_postal_code',
         'seller_address',
         'seller_address_detail'];
+    public $timestamps = false;
+    public $incrementing = false;
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($model) {
+            $model->seller_id = Uuid::uuid4()->toString();
+        });
+    }
 }
