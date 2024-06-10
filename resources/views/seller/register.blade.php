@@ -34,8 +34,10 @@
                 <p>Alamat Toko</p>
               </div>
               <div class="flex justify-between w-full h-24 rounded-xl bg-white  text-text_secondary text-md px-2 focus:outline-field_border">
-                <div class="flex justify-center items-center">Jl. Raya Tajem No.32, Tajem, Maguwoharjo,
-                  Kec. Depok, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55281</div>
+                <div class="flex flex-col justify-center">
+                  <p class="w-full text-left">{{ $user->user_address_detail }}</p>
+                  <p class="w-full text-left">{{ $user->user_address }} {{ $user->user_postal_code }}</p>
+                </div>
                 <a class="w-12 flex justify-center items-center">
                   <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M9.50002 17.5754H17.1M11.875 3.80039L15.2 6.65039M3.32502 12.3504L12.6915 2.65677C13.7 1.64827 15.3351 1.64826 16.3436 2.65677C17.3521 3.66527 17.3521 5.30038 16.3436 6.30889L6.65002 15.6754L1.90002 17.1004L3.32502 12.3504Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />

@@ -4,7 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Http;
+use App\Models\Province;
+use App\Models\City;
+use App\Models\District;
+use App\Models\Subdistrict;
+use App\Models\Zipcode;
 use App\Models\User;
 
 class UserController extends Controller
@@ -55,7 +59,8 @@ class UserController extends Controller
         if (!session()->has('user_id')) {
             return redirect('/login');
         }
-        return view('seller/register');
+        $user = User::where('user_id', session('user_id'))->first();
+        return view('seller/register', ['user' => $user]);
     }
 
     public function showEditAddressPage()
@@ -92,7 +97,14 @@ class UserController extends Controller
     {
         $user = User::where('user_id', session('user_id'))->first();
         $user->user_postal_code = $request->zip_code;
-        $user->user_address = $request->subdistrict . ', ' . $request->district . ', ' . $request->city . ', ' . $request->province;
+
+        $province = Province::where('id', $request->province)->first();
+        $city = City::where('id', $request->city)->first();
+        $district = District::where('id', $request->district)->first();
+        $subdistrict = Subdistrict::where('id', $request->subdistrict)->first();
+
+        $user->user_address = $province->nama . ', ' . $city->nama . ', ' . $district->nama . ', ' . $subdistrict->nama;
+
         $user->user_address_detail = $request->user_address_detail;
         $user->save();
         return redirect('/profile');
