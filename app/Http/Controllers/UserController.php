@@ -98,18 +98,7 @@ class UserController extends Controller
     {
         $user = User::where('user_id', session('user_id'))->first();
         $user->user_postal_code = $request->zip_code;
-<<<<<<< HEAD
-
-        $province = Province::where('id', $request->province)->first();
-        $city = City::where('id', $request->city)->first();
-        $district = District::where('id', $request->district)->first();
-        $subdistrict = Subdistrict::where('id', $request->subdistrict)->first();
-
-        $user->user_address = $province->nama . ', ' . $city->nama . ', ' . $district->nama . ', ' . $subdistrict->nama;
-=======
->>>>>>> f886398382550a08658a42462873b2468dcbf13e
         $user->user_address_detail = $request->user_address_detail;
-      
         $user->save();
         return redirect('/profile');
     }
