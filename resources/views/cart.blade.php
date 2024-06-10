@@ -9,8 +9,8 @@
   @vite('resources/css/app.css')
 </head>
 
-<body class="bg-slate-900">
-  <div class="bg-background h-screen flex flex-col">
+<body class="bg-gray-400">
+  <div class="container mx-auto max-w-xl bg-background h-screen flex flex-col">
     <a href="{{URL::previous()}}
     " class="border-b">
       <button class="p-4 flex items-center justify-start">

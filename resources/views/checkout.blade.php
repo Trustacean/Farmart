@@ -9,7 +9,7 @@
     @vite('resources/css/app.css')
 </head>
 
-<body class="bg-gray-100">
+<body class="bg-gray-400">
     <div class="h-screen flex flex-col justify-between">
         <div class="p-4 border-b">
             <a href="javascript:history.back()" class="flex items-center text-gray-600">
