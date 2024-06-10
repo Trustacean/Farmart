@@ -4,8 +4,7 @@ module.exports = {
     "./resources/**/*.blade.php",
     "./resources/**/*.js",
     "./resources/**/*.vue",
-  ],
-  theme: {
+  ], theme: {
     extend: {
       colors: {
         background: '#F3F3F3',
@@ -19,3 +18,4 @@ module.exports = {
   },
   plugins: [],
 }
+
