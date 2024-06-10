@@ -8,7 +8,6 @@ Farmart is an online market service for farmers in Indonesia, we aim to uhhhhhh.
 **'/register'** will show register page of the webapp
 
 ## Database Structure
-
 ### **users**
 |**user_id**|**user_phone**|**user_password**|**user_name**|**user_postal_code**|**user_address_detail**
 |:-:|:-:|:-:|:-:|:-:|:-:|
@@ -30,11 +29,15 @@ Farmart is an online market service for farmers in Indonesia, we aim to uhhhhhh.
 |int(100)|Varchar(50)|
 
 
+
+#### **Explanation**
 **user_id** : Primary Key of Users model, using Hash structure for security\
 **user_phone** : Secondary Key\
 **user_password** : Passkey for user to login into their accounts, using Hash structure for security\
 **user_name** : The name of the user\
 **user_postal_code** : National Postal Code, will be used in relation to address table for adress details like city, province, etc
+
+
 
 ## Contributors
 [Hendro Wunga](https://github.com/hendrowunga)\
