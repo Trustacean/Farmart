@@ -4,6 +4,7 @@ use App\Http\Controllers\AddressController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\SellerController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -57,3 +58,7 @@ Route::get('/logout', [UserController::class, 'logout'])->name('logout');
 Route::get('/seller/register', [SellerController::class, 'showSellerRegisterPage'])->name('seller/register');
 
 Route::post('/seller/register', [SellerController::class, 'storeSeller'])->name('seller/register');
+
+Route::get('/seller/store', [SellerController::class, 'showStorePage'])->name('seller/store');
+
+Route::get('/product/detail/{productId}', [ProductController::class, 'showProductDetail'])->name('product/detail');
