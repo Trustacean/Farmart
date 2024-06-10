@@ -26,7 +26,6 @@
                 <img src="/icons/search.svg" alt="" class="w-[30px]">
               </button>
             </div>
-
           </div>
         </div>
         <div class="">
@@ -38,14 +37,12 @@
                   <img class="w-[60px] h-[60px] object-cover rounded-lg shadow-lg" src="'{{ $product->product_picture }}'" alt="">
                   <img class="w-[60px] h-[60px] object-cover rounded-lg shadow-lg" src="'{{ $product->product_picture }}'" alt="">
                 </div>
-
                 <div id="price" class="flex flex-row gap-2 items-center justify-normal">
                   <div class="">
                     <strong class="text-xl text-primary"> Rp. {{ number_format($product->product_sell_price, 0, ',', '.') }}</strong>
                   </div>
                   <div class="">
-                    <p class="text-sm text-foreground line-through text-text_secondary">Rp. {{ number_format($product->product_sell_price, 0, ',', '.') }}
-                    </p>
+                    <p class="text-sm text-foreground line-through text-text_secondary">Rp. {{ number_format($product->product_sell_price, 0, ',', '.') }}</p>
                   </div>
                 </div>
                 <div id="name" class="flex flex-row gap-2 items-center justify-normal">
@@ -63,10 +60,8 @@
                       <p class="p-2 text-xs">Image</p>
                     </div>
                   </div>
-
                   <p class="text-xs font-semibold">Terjual 231</p>
                 </div>
-
               </div>
             </div>
             <div class="border w-full border-black/20 my-2"></div>
@@ -85,35 +80,72 @@
                   <div class="flex flex-col w-full justify-normal">
                     <div class="flex flex-row gap-1 items-center justify-normal">
                       <div class="w-[8px] h-[8px] bg-primary rounded-full"></div>
-                      <p class="text-sm  ">online</p>
+                      <p class="text-sm">online</p>
                     </div>
-                    <p class="text-xs ">{{ $district->nama }}, {{ $city->nama }}</p>
+                    <p class="text-xs">{{ $district->nama }}, {{ $city->nama }}</p>
                   </div>
                   <div class="flex flex-col gap-1 items-end text-right justify-normal w-full">
-                    <p class="text-xs  ">Rating 4.9</p>
-                    <button class="text-xs px-2 bg-primary rounded-md py-1 text-white ">Ikuti</button>
+                    <p class="text-xs">Rating 4.9</p>
+                    <button class="text-xs px-2 bg-primary rounded-md py-1 text-white">Ikuti</button>
                   </div>
                 </div>
               </div>
             </div>
             <div class="border w-full border-black/20 my-2"></div>
-            <div class="flex flex-col gap-2">
-            </div>
+            <div class="flex flex-col gap-2"></div>
           </div>
         </div>
       </div>
     </div>
     <div class="relative">
-      <form action="{{ route('cart/add', $product->product_id) }}" method="POST">
+      <form id="add-to-cart-form" action="{{ route('cart/add', $product->product_id) }}" method="POST">
         @csrf
-        <div class=" w-full h-[80px] flex flex-row px-2 py-2 gap-2 absolute bottom-0 left-0 bg-neutral-300">
-          <button class=" h-[50px] w-full bg-white rounded-lg px-2 border-primary  text-primary border">
+        <div class="w-full h-[80px] flex flex-row px-2 py-2 gap-2 absolute bottom-0 left-0 bg-neutral-300">
+          <button type="button" id="add-to-cart-button" class="h-[50px] w-full bg-white rounded-lg px-2 border-primary text-primary border">
             <p class="font-semibold">Masukan Keranjang</p>
           </button>
         </div>
       </form>
     </div>
   </div>
+
+  <!-- Pop-up "Berhasil ditambahkan" -->
+  <div id="popup" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+    <div class="bg-white p-5 rounded-lg shadow-lg">
+      <p>Berhasil ditambahkan</p>
+    </div>
+  </div>
+
+  <script>
+  document.getElementById('add-to-cart-button').addEventListener('click', function() {
+    const form = document.getElementById('add-to-cart-form');
+    const formData = new FormData(form);
+
+    fetch(form.action, {
+      method: 'POST',
+      body: formData,
+      headers: {
+        'X-Requested-With': 'XMLHttpRequest',
+        'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value
+      }
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data.success) {
+        // Show the pop-up immediately
+        document.getElementById('popup').classList.remove('hidden');
+        // Hide the pop-up after 1 second
+        setTimeout(function() {
+          document.getElementById('popup').classList.add('hidden');
+        }, 400);
+      }
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+  });
+</script>
+
 </body>
 
 </html>

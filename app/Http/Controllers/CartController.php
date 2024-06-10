@@ -31,7 +31,9 @@ class CartController extends Controller
                 'quantity' => 1
             ]);
         }
-        return redirect('/cart');
+        // return redirect('/cart');
+        return response()->json(['success' => true]);
+
     }
 
     public function removeCart($productId)
