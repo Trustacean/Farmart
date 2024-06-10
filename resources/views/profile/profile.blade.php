@@ -9,7 +9,7 @@
   @vite('resources/css/app.css')
 </head>
 
-<body class="bg-gray-300">
+<body class="bg-gray-400">
   <div class="container mx-auto max-w-xl bg-background h-screen">
     <div class="bg-background pt-10 pb-10 px-8 h-full min-h-96">
       <div>
@@ -48,12 +48,17 @@
           </svg>
           <div class="flex justify-start">
             <div class="">
+              @if ($isSeller)
+              <span class="mb-3 font-bold text-xl text-text_primary align-top">Toko Saya</span>
+              <p class="text-sm">Daftar Produk Yang Sedang Dijual</p>
+              @else
               <span class="mb-3 font-bold text-xl text-text_primary align-top">Daftar Jadi Penjual</span>
               <p class="text-sm">Jadi Penjual dan Jual Produk</p>
+              @endif
             </div>
           </div>
         </div>
-        <a class="w-12 flex justify-center items-center" href="./seller/register">
+        <a class="w-12 flex justify-center items-center" href="{{ $isSeller ? './seller/store' : './seller/register' }}">
           <svg width="19" height="19" viewBox="0 0 7 12" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M1 1L6 6L1 11" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
           </svg>

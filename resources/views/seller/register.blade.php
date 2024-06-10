@@ -8,7 +8,7 @@
   @vite('resources/css/app.css')
 </head>
 
-<body class="bg-gray-300">
+<body class="bg-gray-400">
   <div class="container mx-auto max-w-xl bg-background h-screen">
     <div class="flex flex-col justify-between pt-16 pb-10 px-8 h-full">
       <div class="">

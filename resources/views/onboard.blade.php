@@ -8,7 +8,7 @@
   @vite('resources/css/app.css')
 </head>
 
-<body class="bg-gray-300">
+<body class="bg-gray-400">
   <div class="container mx-auto max-w-xl bg-gray-300">
     <div class="bg-background relative h-screen">
     <img src="{{ asset('images/banner_image.png') }}" alt="Banner" class="object-cover w-full h-full absolute inset-0">
