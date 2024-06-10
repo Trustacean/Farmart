@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\SellerController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CartController;
 
 /*
 |--------------------------------------------------------------------------
@@ -59,3 +60,9 @@ Route::get('/seller/store', [SellerController::class, 'showStorePage'])->name('s
 Route::get('/product/detail/{productId}', [ProductController::class, 'showProductDetail'])->name('product/detail');
 
 Route::get('/product/edit/{productId}', [ProductController::class, 'showProductEdit'])->name('product/edit');
+
+Route::get('cart', [CartController::class, 'index'])->name('cart');
+
+Route::get('checkout', [CartController::class, 'checkout'])->name('checkout');
+
+Route::get('payment-qr', [CartController::class, 'paymentQr'])->name('payment');
