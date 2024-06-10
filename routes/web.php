@@ -22,7 +22,6 @@ Route::get('/', function () {
 });
 Route::get('/', [UserController::class, 'showOnboardPage'])->name('onboard');
 
-
 Route::get('/register', [UserController::class, 'showRegisterPage'])->name('register');
 
 Route::get('/login', [UserController::class, 'showLoginPage'])->name('login');
