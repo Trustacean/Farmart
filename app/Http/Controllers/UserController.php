@@ -24,7 +24,7 @@ class UserController extends Controller
 
     public function showRegisterPage()
     {
-        return view('register');
+        return view('register', ['message'=>null]);
     }
 
     public function showLoginPage()
@@ -32,7 +32,7 @@ class UserController extends Controller
         if (session()->has('user_id')) {
             return redirect('/home');
         }
-        return view('login');
+        return view('login', ['message'=>null]);
     }
 
     public function showHomePage()
@@ -92,6 +92,10 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
+        if(User::where('user_phone', $request->user_phone)->exists()) {
+            return view('register', ['message'=>'Nomor Telepon Sudah Terdaftar']);
+        }
+
         $user = new User();
         $user->user_id = uniqid();
         $user->user_phone = $request->user_phone;
@@ -113,10 +117,14 @@ class UserController extends Controller
     public function login(Request $request)
     {
         $user = User::where('user_phone', $request->user_phone)->first();
+
+        if(!User::where('user_phone', $request->user_phone)->exists()) {
+            return view('login', ['message' => "Nomor Telepon Belum Terdaftar"]);
+        }
+
         if (!$user || !Hash::check($request->user_password, $user->user_password)) {
-            return response()->json([
-                'message' => 'Unauthorized'
-            ], 401);
+            $message = "Nomor telepon atau password salah";
+            return view('login', ['message' => $message]);
         } else {
             session(['user_id' => $user->user_id]);
             return redirect('/home');

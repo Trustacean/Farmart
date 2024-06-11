@@ -33,6 +33,7 @@
               <input required type="text" class="w-full h-12 border border-text_secondary rounded-xl  text-text_secondary text-md px-4 focus:outline-field_border" placeholder="Nama" id="user_name" name="user_name">
               <input required type="password" class="w-full h-12 border border-text_secondary rounded-xl  text-text_secondary text-md px-4 focus:outline-field_border" placeholder="Kata Sandi" id="user_password" name="user_password">
             </div>
+            <p class="text-red-500">{{$message}}</p>
             <button type="submit" class="mt-16 flex items-center justify-center bg-primary w-full h-12 rounded-xl text-background text-lg">Daftar</button>
           </form>
         </div>
