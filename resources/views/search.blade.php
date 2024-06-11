@@ -28,7 +28,7 @@
           @foreach($products as $product)
           <a href="../product/detail/{{$product->product_id}}" class="bg-white p-4 rounded-lg shadow-md">
             <div class="relative">
-              <img src='{{ $product->product_picture }}' alt="Product" class="w-full h-48 object-cover rounded-lg">
+              <img src="{{ asset('storage/product_images/' . $product->product_image) }}" alt="Product" class="w-full h-48 object-cover rounded-lg">
             </div>
             <div class="mt-4">
               <h2 class="text-lg font-bold">{{ $product->product_name }}</h2>
