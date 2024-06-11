@@ -32,10 +32,10 @@
           <div class="flex flex-col gap-3 justify-start mb-[50px]">
             <div class=" flex flex-col gap-2 mt-5 rounded-lg ">
               <div class="flex flex-col gap-2">
-                <img class="w-full h-[200px] object-cover rounded-lg shadow-lg" src="'{{ $product->product_picture }}'" alt="">
+                <img class="w-full h-[400px] object-cover rounded-lg shadow-lg" src="{{ asset('storage/product_images/' . $product->product_image) }}" alt="">
                 <div class="flex flex-row gap-2 items-start justify-normal">
-                  <img class="w-[60px] h-[60px] object-cover rounded-lg shadow-lg" src="'{{ $product->product_picture }}'" alt="">
-                  <img class="w-[60px] h-[60px] object-cover rounded-lg shadow-lg" src="'{{ $product->product_picture }}'" alt="">
+                  <img class="w-[60px] h-[60px] object-cover rounded-lg shadow-lg" src="{{ asset('storage/product_images/' . $product->product_image) }}" alt="">
+                  <img class="w-[60px] h-[60px] object-cover rounded-lg shadow-lg" src="{{ asset('storage/product_images/' . $product->product_image) }}" alt="">
                 </div>
                 <div id="price" class="flex flex-row gap-2 items-center justify-normal">
                   <div class="">

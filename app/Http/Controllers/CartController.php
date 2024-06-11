@@ -58,6 +58,7 @@ class CartController extends Controller
             $product = Product::where('product_id', $cart->product_id)->first();
             $cartItems[] = [
                 'product_id' => $product->product_id,
+                'image' => $product->product_image,
                 'seller_name' => Seller::where('seller_id', $product->seller_id)->first()->store_name,
                 'name' => $product->product_name,
                 'price' => $product->product_sell_price,

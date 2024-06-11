@@ -106,7 +106,7 @@
       <h1 class="text-2xl font-bold">Produk Terbaru</h1>
       @foreach($products as $product)
       <a class="flex bg-white border drop-shadow-lg rounded-lg p-4 mb-4" href="./product/detail/{{ $product->product_id }}">
-        <img src="" alt="" class="w-24 h-24 rounded-lg mr-4">
+        <img src="{{ asset('storage/product_images/' . $product->product_image) }}" alt="" class="w-24 h-24 rounded-lg mr-4">
         <div>
           <h3 class="font-bold hover:underline duration-300">{{ $product->product_name }}</h3>
           <p class="text-green-600 font-bold">Rp{{ number_format($product->product_sell_price, 0, ',', '.') }}</p>

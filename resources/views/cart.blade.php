@@ -43,7 +43,7 @@
         <div class="flex items-center space-x-2">
         <!-- Menceklist per item -->
         <input type="checkbox" class="select-item form-checkbox" data-price="{{$item['price']}}">
-        <img src="" alt="Product" class="rounded-lg w-16 h-16">
+        <img src="{{ asset('storage/product_images/' . $item['image']) }}" alt="Product" class="rounded-lg w-16 h-16">
         <div class="flex flex-col">
           <span>
           <span class="font-bold">

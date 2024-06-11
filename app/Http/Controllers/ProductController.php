@@ -9,6 +9,9 @@ use App\Models\Category;
 use App\Models\Zipcode;
 use App\Models\District;
 use App\Models\City;
+use Illuminate\Http\Request;
+
+
 
 class ProductController extends Controller
 {
@@ -55,7 +58,7 @@ class ProductController extends Controller
         return view('product/create', ['categories' => $categories]);
     }
 
-    public function storeProduct()
+    public function storeProduct(Request $request)
     {
         $user = User::where('user_id', session('user_id'))->first();
         $seller = Seller::where('user_id', $user->user_id)->first();
@@ -69,12 +72,21 @@ class ProductController extends Controller
         $product->product_stock = request('product_stock');
         $product->product_description = request('product_description');
         $product->category_id = request('product_category');
+
+        if ($request->hasFile('product_image')) {
+            $file = $request->file('product_image');
+            $filename = time() . '.' . $file->getClientOriginalExtension();
+            $file->move(public_path('storage/product_images'), $filename);
+            $product->product_image = $filename;
+        } else {
+            $product->product_image = 'default.jpg';
+        }
         $product->save();
 
         return redirect('/seller/store');
     }
 
-    public function updateProduct($product_id)
+    public function updateProduct($product_id, Request $request)
     {
         $product = Product::where('product_id', $product_id)->first();
         $product->product_name = request('product_name');
@@ -83,6 +95,15 @@ class ProductController extends Controller
         $product->product_stock = request('product_stock');
         $product->product_description = request('product_description');
         $product->category_id = request('product_category');
+
+        if ($request->hasFile('product_image')) {
+            $file = $request->file('product_image');
+            $filename = time() . '.' . $file->getClientOriginalExtension();
+            $file->move(public_path('storage/product_images'), $filename);
+            $product->product_image = $filename;
+        } else {
+            $product->product_image = 'default.jpg';
+        }
         $product->save();
 
         return redirect('/seller/store');

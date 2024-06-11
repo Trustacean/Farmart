@@ -28,7 +28,7 @@
           @foreach($products as $product)
           <div class="bg-white p-4 rounded-lg shadow-md">
             <div class="relative">
-            <img src='{{ $product->product_picture }}' alt="Product" class="w-full h-48 object-cover rounded-lg">
+            <img src="{{ asset('storage/product_images/' . $product->product_image) }}" alt="Product" class="w-full h-48 object-cover rounded-lg">
             </div>
             <div class="mt-4">
               <h2 class="text-lg font-bold">{{ $product->product_name }}</h2>
@@ -44,6 +44,7 @@
         </div>
       </div>
     </div>
+    <div class="p-8"></div>
     <div class="fixed bottom-0 w-full bg-white p-3 flex justify-around max-w-xl">
       <div class="flex flex-col justify-between items-center w-full h-full">
         <a href="{{ route('product.create') }}" class="flex items-center justify-center bg-primary w-full h-12 rounded-xl border-2 text-white text-lg">Tambah Produk</a>
