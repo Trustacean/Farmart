@@ -13,6 +13,10 @@ class CartController extends Controller
 
     public function addCart($productId)
     {
+        if (!session()->has('user_id')) {
+            return redirect('/login');
+        }
+        
         $user = User::where('user_id', session('user_id'))->first();
         $cart = Cart::where('user_id', $user->user_id)
             ->where('product_id', $productId)
@@ -50,6 +54,10 @@ class CartController extends Controller
 
     public function index()
     {
+        if (!session()->has('user_id')) {
+            return redirect('/login');
+        }
+
         $user = User::where('user_id', session('user_id'))->first();
         $carts = Cart::where('user_id', $user->user_id)->get();
         $cartItems = [];
