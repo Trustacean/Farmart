@@ -38,9 +38,6 @@
               Profil Saya
             </a>
             <a href="#" class="m-1 block px-4 py-2 text-sm capitalize text-gray-700 hover:bg-primary hover:text-white">
-              Toko Saya
-            </a>
-            <a href="#" class="m-1 block px-4 py-2 text-sm capitalize text-gray-700 hover:bg-primary hover:text-white">
               Bantuan
             </a>
             <a href="{{ isset($user) ? './logout' : './login' }}" class="m-1 block px-4 py-2 text-sm capitalize {{ isset($user) ? 'hover:text-white hover:bg-red-600' : 'bg-white text-gray-700 hover:bg-primary hover:text-white' }} hover:text-white">
